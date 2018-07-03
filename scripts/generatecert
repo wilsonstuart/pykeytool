@@ -1,0 +1,23 @@
+#! /usr/bin/env python
+"""Generate Bulk Certificates
+__version__ = '0.1'
+__author__ = 'Stuart Wilson'
+Script to generate batch of certificates based on a request file as input:
+"""
+
+import pykeytool.pykeytool
+import fileinput
+import os
+
+if __name__ == '__main__':
+    #Iterate over id's listed in file
+    requestfile = os.path.join("C:\Work\Temp\pykeytool", "requests.txt")
+    f_input = fileinput.input(files=requestfile)
+    for id in f_input:
+        #Strip off newline chars
+        id = id.strip()
+        #Generate Certificates
+        context = 14142
+        pykeytool.pykeytool.generate_online_cert(id, context)
+
+    f_input.close()

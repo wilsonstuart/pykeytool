@@ -1,0 +1,5 @@
+include README.rst
+include ./raapi/*
+include ./config/*
+include ./logs/*
+include ./script/*

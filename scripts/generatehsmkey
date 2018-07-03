@@ -1,0 +1,252 @@
+#! /usr/bin/env python
+
+"""Test script
+__version__ = '0.1'
+__author__ = 'Stuart Wilson'
+"""
+from Cryptodome.PublicKey import RSA
+from PyKCS11 import *
+import sys
+import os
+import binascii
+import asn1crypto.keys
+
+# place here your PKCS#11 library
+lib_path = "C:/Program Files (x86)/nCipher/nfast/bin/cknfast.dll"
+pin = "123456"  # place here the pin of your token
+os.environ["PYKCS11LIB"] = "C:/Program Files (x86)/nCipher/nfast/bin/cknfast.dll"
+os.environ["CKNFAST_OVERRIDE_SECURITY_ASSURANCES"] = "tokenkeys"
+
+red = blue = magenta = normal = ""
+if sys.stdout.isatty() and platform.system().lower() != 'windows':
+    red = "\x1b[01;31m"
+    blue = "\x1b[34m"
+    magenta = "\x1b[35m"
+    normal = "\x1b[0m"
+sign = False
+format_long = magenta + "  %s:" + blue + " %s (%s)" + normal
+format_binary = magenta + "  %s:" + blue + " %d bytes" + normal
+format_normal = magenta + "  %s:" + blue + " %s" + normal
+
+
+def encode_rsa_private_key(key, session):
+    """
+    Encode an RSA private key into PKCS#1 DER-encoded format.
+    :param PKCS11 CKO_PRIVATEKEY Object key: RSA private key
+    :rtype: string  - RSA private KEY
+    """
+    """
+    fields = [
+        ('version', RSAPrivateKeyVersion),
+        ('modulus', Integer),
+        ('public_exponent', Integer),
+        ('private_exponent', Integer),
+        ('prime1', Integer),
+        ('prime2', Integer),
+        ('exponent1', Integer),
+        ('exponent2', Integer),
+        ('coefficient', Integer),
+        ('other_prime_infos', OtherPrimeInfos, {'optional': True})
+    ]
+    """
+
+    all_attributes = list(PyKCS11.CKA.keys())
+    # only use the integer values and not the strings like 'CKM_RSA_PKCS'
+    all_attributes = [e for e in all_attributes if isinstance(e, int)]
+    attributes = session.getAttributeValue(key, all_attributes)
+    attrDict = dict(list(zip(all_attributes, attributes)))
+    if attrDict[PyKCS11.CKA_CLASS] == PyKCS11.CKO_PRIVATE_KEY \
+            and attrDict[PyKCS11.CKA_KEY_TYPE] == PyKCS11.CKK_RSA:
+        return asn1crypto.keys.RSAPrivateKey({
+            'version': asn1crypto.keys.RSAPrivateKeyVersion(0),
+            'modulus': int.from_bytes(attrDict[PyKCS11.CKA_MODULUS], byteorder='big'),
+            'public_exponent': int.from_bytes(attrDict[PyKCS11.CKA_PUBLIC_EXPONENT], byteorder='big'),
+            'private_exponent': int.from_bytes(attrDict[PyKCS11.CKA_PRIVATE_EXPONENT], byteorder='big'),
+            'prime1': int.from_bytes(attrDict[PyKCS11.CKA_PRIME_1], byteorder='big'),
+            'prime2': int.from_bytes(attrDict[PyKCS11.CKA_PRIME_2], byteorder='big'),
+            'exponent1': int.from_bytes(attrDict[PyKCS11.CKA_EXPONENT_1], byteorder='big'),
+            'exponent2': int.from_bytes(attrDict[PyKCS11.CKA_EXPONENT_2], byteorder='big'),
+            'coefficient': int.from_bytes(attrDict[PyKCS11.CKA_COEFFICIENT], byteorder='big'),
+        }).dump()
+
+
+def hexx(intval):
+    x = hex(intval)[2:]
+    if (x[-1:].upper() == 'L'):
+        x = x[:-1]
+    if len(x) % 2 != 0:
+        return "0%s" % x
+    return x
+
+
+def dump(src, length=16):
+    FILTER = ''.join([(len(repr(chr(x))) == 3) and chr(x) or '.' for x in range(256)])
+    N = 0
+    result = ''
+    while src:
+        s, src = src[:length], src[length:]
+        hexa = ' '.join(["%02X" % ord(x) for x in s])
+        s = s.translate(FILTER)
+        result += "%04X   %-*s   %s\n" % (N, length * 3, hexa, s)
+        N += length
+    return result
+
+
+pkcs11 = PyKCS11Lib()
+pkcs11.load()  # define environment variable PYKCS11LIB=YourPKCS11Lib
+
+# get 1st slot
+slot = pkcs11.getSlotList(tokenPresent=True)[1]
+
+# the key_id has to be the same for both objects
+key_id = (0x22,)
+
+session = pkcs11.openSession(slot, CKF_SERIAL_SESSION | CKF_RW_SESSION)
+session.login("123456")
+
+# ############   key-pair generation    ##########################
+# The first step in the process is to create the key-templates. See PKCS#11
+# `10.8 Public key objects` to learn which attributes are available. Section
+# 10.9 covers private keys.
+label = 'pkcs_testing'  # just a label for identifying objects
+key_length = 1024  # key-length in bits
+
+# the key_id has to be the same for both objects, it will also be necessary
+# when importing the certificate, to ensure it is linked with these keys.
+# key_id = (0x01,)
+
+public_template = [
+    (PyKCS11.CKA_CLASS, PyKCS11.CKO_PUBLIC_KEY),
+    (PyKCS11.CKA_TOKEN, PyKCS11.CK_TRUE),
+    (PyKCS11.CKA_PRIVATE, PyKCS11.CK_FALSE),
+    (PyKCS11.CKA_MODULUS_BITS, key_length),
+    (PyKCS11.CKA_PUBLIC_EXPONENT, (0x01, 0x00, 0x01)),
+    (PyKCS11.CKA_ENCRYPT, PyKCS11.CK_TRUE),
+    (PyKCS11.CKA_VERIFY, PyKCS11.CK_TRUE),
+    (PyKCS11.CKA_VERIFY_RECOVER, PyKCS11.CK_TRUE),
+    (PyKCS11.CKA_WRAP, PyKCS11.CK_TRUE),
+    (PyKCS11.CKA_KEY_TYPE, PyKCS11.CKK_RSA),
+    (PyKCS11.CKA_LABEL, label),
+    (PyKCS11.CKA_ID, key_id),
+]
+
+private_template = [
+    (PyKCS11.CKA_CLASS, PyKCS11.CKO_PRIVATE_KEY),
+    (PyKCS11.CKA_PRIVATE, PyKCS11.CK_TRUE),
+    (PyKCS11.CKA_TOKEN, PyKCS11.CK_TRUE),
+    (PyKCS11.CKA_SIGN_RECOVER, PyKCS11.CK_TRUE),
+    (PyKCS11.CKA_SENSITIVE, PyKCS11.CK_FALSE),
+    (PyKCS11.CKA_DECRYPT, PyKCS11.CK_TRUE),
+    (PyKCS11.CKA_SIGN, PyKCS11.CK_TRUE),
+    (PyKCS11.CKA_UNWRAP, PyKCS11.CK_TRUE),
+    (PyKCS11.CKA_LABEL, label),
+    (PyKCS11.CKA_ID, key_id),
+]
+
+(pubKey, privKey) = session.generateKeyPair(public_template, private_template)
+# ############# the keys were generated and stored on the card ###############
+
+privKeyHandle = session.findObjects([(CKA_CLASS, CKO_PRIVATE_KEY), (CKA_ID, key_id)])[0]
+
+key = RSA.importKey(encode_rsa_private_key(privKeyHandle, session))
+
+encrypted_key = key.export_key(passphrase="secret_code", pkcs=8)
+
+file_out = open("rsa_key.bin", "wb")
+file_out.write(encrypted_key)
+
+print(key.publickey().export_key())
+
+modulus = session.getAttributeValue(pubKey, [CKA_MODULUS])[0]
+print("\nmodulus: {}".format(binascii.hexlify(bytearray(modulus))))
+
+modulus = session.getAttributeValue(privKey, [CKA_MODULUS])[0]
+print("\nmodulus: {}".format(binascii.hexlify(bytearray(modulus))))
+
+objects = session.findObjects()
+print()
+print("Found %d objects: %s" % (len(objects), [x.value() for x in objects]))
+
+all_attributes = list(PyKCS11.CKA.keys())
+# remove the CKR_ATTRIBUTE_SENSITIVE attributes since we can't get
+# their values and will get an exception instead
+all_attributes.remove(PyKCS11.CKA_PRIVATE_EXPONENT)
+all_attributes.remove(PyKCS11.CKA_PRIME_1)
+all_attributes.remove(PyKCS11.CKA_PRIME_2)
+all_attributes.remove(PyKCS11.CKA_EXPONENT_1)
+all_attributes.remove(PyKCS11.CKA_EXPONENT_2)
+all_attributes.remove(PyKCS11.CKA_COEFFICIENT)
+# only use the integer values and not the strings like 'CKM_RSA_PKCS'
+all_attributes = [e for e in all_attributes if isinstance(e, int)]
+
+n_obj = 1
+for o in objects:
+    print()
+    print((red + "==================== Object: %d/%d (%d) ====================" + normal) % (
+        n_obj, len(objects), o.value()))
+    n_obj += 1
+    try:
+        attributes = session.getAttributeValue(o, all_attributes)
+    except PyKCS11.PyKCS11Error as e:
+        print(e)
+        continue
+    attrDict = dict(list(zip(all_attributes, attributes)))
+    if attrDict[PyKCS11.CKA_CLASS] == PyKCS11.CKO_PRIVATE_KEY \
+            and attrDict[PyKCS11.CKA_KEY_TYPE] == PyKCS11.CKK_RSA:
+        m = attrDict[PyKCS11.CKA_MODULUS]
+        e = attrDict[PyKCS11.CKA_PUBLIC_EXPONENT]
+        if m and e:
+            mx = eval(b'0x' + str.encode(''.join("%02X" % c for c in m)))
+            ex = eval(b'0x' + str.encode(''.join("%02X" % c for c in e)))
+        if sign:
+            try:
+                toSign = b"12345678901234567890"  # 20 bytes, SHA1 digest
+                print("* Signing with object 0x%08X following data: %s" % (o.value(), toSign))
+                signature = session.sign(o, toSign)
+                sx = eval(b'0x' + ''.join("%02X" % c for c in signature))
+                print("Signature:")
+                print(dump(''.join(map(chr, signature))))
+                if m and e:
+                    print("Verifying using following public key:")
+                    print("Modulus:")
+                    print(dump(''.join(map(chr, m))))
+                    print("Exponent:")
+                    print(dump(''.join(map(chr, e))))
+                    decrypted = pow(sx, ex, mx)  # RSA
+                    print("Decrypted:")
+                    d = binascii.unhexlify(hexx(decrypted))
+                    print(dump(d))
+                    if toSign == d[-20:]:
+                        print("*** signature VERIFIED!\n")
+                    else:
+                        print("*** signature NOT VERIFIED; decrypted value:")
+                        print(hex(decrypted), "\n")
+                else:
+                    print("Unable to verify signature: MODULUS/PUBLIC_EXP not found")
+            except PyKCS11.PyKCS11Error as e:
+                print("Sign failed, exception:", e)
+                break
+            else:
+                print("ERROR: Private key don't have MODULUS/PUBLIC_EXP")
+
+    print("Dumping attributes:")
+    for q, a in zip(all_attributes, attributes):
+        if a is None:
+            # undefined (CKR_ATTRIBUTE_TYPE_INVALID) attribute
+            continue
+        if q == PyKCS11.CKA_CLASS:
+            print(format_long % (PyKCS11.CKA[q], PyKCS11.CKO[a], a))
+        elif q == PyKCS11.CKA_CERTIFICATE_TYPE:
+            print(format_long % (PyKCS11.CKA[q], PyKCS11.CKC[a], a))
+        elif q == PyKCS11.CKA_KEY_TYPE:
+            print(format_long % (PyKCS11.CKA[q], PyKCS11.CKK[a], a))
+        elif session.isBin(q):
+            print(format_binary % (PyKCS11.CKA[q], len(a)))
+            if a:
+                print(dump(''.join(map(chr, a))), )
+        elif q == PyKCS11.CKA_SERIAL_NUMBER:
+            print(format_binary % (PyKCS11.CKA[q], len(a)))
+            if a:
+                print(dump(a), )
+        else:
+            print(format_normal % (PyKCS11.CKA[q], a))
