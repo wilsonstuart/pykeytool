@@ -10,63 +10,43 @@ Script to generate batch of keys and csr's based on a request file as input:
 import fileinput
 import os
 import logging.config
+import argparse
 
 from pykeytool.pykeytool import generate_offline_keyandcsr
-
 
 # TODO: Fix the base dir as this will be installed into site-packages
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# Set Global Variables for pykeytool module
-# RAAPI SETTINGS
-config = configparser.ConfigParser()
-config.read(os.path.join(BASE_DIR, 'config', 'config.ini'))
-raapiurl = config.get('RAAPISERVER', 'URL')
-pollinterval = config.get('RAAPISERVER', 'POLLINTERVAL')
-pollcount = config.get('RAAPISERVER', 'POLLCOUNT')
-rapkcs12 = config.get('RAAPISERVER', 'RAPKCS12')
-raapidir = config.get('RAAPISERVER', 'RAAPICRED_DIR')
-
-# General processing
-batchsize = config.get('GENERAL', 'BATCHSIZE')
-threads = config.get('GENERAL', 'THREADS')
-batchdir = config.get('GENERAL', 'BATCHDIR')
-cacert = config.get('GENERAL', 'CACERT')
-logdir = config.get('GENERAL', 'LOGDIR')
-
-# CRYPTO
-keygen = config.get('CRYPTO', "KEYGEN")
-keytype = config.get('CRYPTO', 'KEYTYPE')
-keysize = config.getint('CRYPTO', 'KEYSIZE')
-keycipher = config.get('CRYPTO', 'KEYCIPHER')
-
-# PKCS11
-pkcs11_lib = config.get('PKCS11', 'PKCS11_LIB')
-pkcs11_pin = config.get('PKCS11', 'PKCS11_PIN')
-
 # Set Logging to file - logs/pykeytool.log:
-logging.config.fileConfig(os.path.join(BASE_DIR, 'config', 'logging.ini'))
+logging.config.fileConfig(os.path.join(BASE_DIR, 'config', 'logging.ini'), disable_existing_loggers=False)
 logger = logging.getLogger(__name__)
 
-if keygen == 'HARDWARE':
-    os.environ["CKNFAST_OVERRIDE_SECURITY_ASSURANCES"] = "tokenkeys"
-    pin = pkcs11_pin
-    os.environ["PYKCS11LIB"] = pkcs11_lib
-    pkcs11 = PyKCS11Lib()
-    pkcs11.load()  # define environment variable PYKCS11LIB=YourPKCS11Lib
-    slot = pkcs11.getSlotList(tokenPresent=True)[1]
-    session = pkcs11.openSession(slot, CKF_SERIAL_SESSION | CKF_RW_SESSION)
-    session.login(pkcs11_pin)
 
 if __name__ == '__main__':
+
+    parser = argparse.ArgumentParser(description='Generate Keys and CSRs')
+
+    parser.add_argument('-pkcs12pw', dest='pkcs12password', action='store', required=True,
+                        help='Password used to protect PKCS12 files')
+
+    parser.add_argument('-r', dest='requestfile', action='store', help='Request file to be processed', required=True)
+
+    args = parser.parse_args()
+
+    # Identify the directory to write the output to.
+    requestdir = os.path.dirname(os.path.abspath(args.requestfile))
+    logger.info('########### Starting Batch Key/CSR Generation ###########')
+    logger.info('Reading Batch file from: %s', args.requestfile)
+    f_input = fileinput.input(files=args.requestfile)
+    count = len(open(args.requestfile).readlines())
     # Iterate over id's listed in file
-    requestfile = os.path.join("C:\Work\Temp\pykeytool", "requests.txt")
-    f_input = fileinput.input(files=(requestfile))
-    for id in f_input:
+    for lineno, id in enumerate(f_input, 1):
         # Strip off newline chars
         id = id.strip()
         # Generate offline
-        name = {"CN": id,"OU": "OEM 5G ICL","O": "Verizon Wireless", "C": "US"}
-        generate_offline_keyandcsr(id, "password", digest="sha256", **name)
-
+        name = {"CN": id, "OU": "OEM 5G ICL", "O": "Verizon Wireless", "C": "US"}
+        logger.info('Generating Key and CSR for %s', name)
+        generate_offline_keyandcsr(id, args.pkcs12password, requestdir, digest="sha256", **name)
+        logger.info('Processed Request Number: %s out of %s', lineno, count)
     f_input.close()
+    logger.info('########### Finished Batch Key/CSR Generation ###########')

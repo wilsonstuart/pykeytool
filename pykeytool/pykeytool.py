@@ -24,7 +24,7 @@ from cryptography.hazmat.primitives import serialization
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Set Logging to file - logs/pykeytool.log:
-logging.config.fileConfig(os.path.join(BASE_DIR, 'config', 'logging.ini'))
+logging.config.fileConfig(os.path.join(BASE_DIR, 'config', 'logging.ini'), disable_existing_loggers=False)
 logger = logging.getLogger(__name__)
 
 # Set Global Variables for pykeytool module
@@ -208,7 +208,7 @@ def create_cert_request(pkey, digest="sha256", **name):
     return req
 
 
-def create_pkcs12(id, pkey, cacert, password):
+def create_pkcs12(id, pkey, cacert, outputdir, password):
     """
         Create a intial PKCS12 file with private key and ca certificates.
         Arguments: id - unique identifier to identify key and csr. These will be out to files based on the id
@@ -217,7 +217,7 @@ def create_pkcs12(id, pkey, cacert, password):
     # st_cert=open(cert, 'rt').read()
 
     # cert = crypto.load_certificate(c.FILETYPE_PEM, cert)
-    p12file = os.path.join(batchdir, id + '.p12')
+    p12file = os.path.join(outputdir, id + '.p12')
     p12 = OpenSSL.crypto.PKCS12()
     p12.set_privatekey(pkey)
 
@@ -246,7 +246,7 @@ def create_pkcs12(id, pkey, cacert, password):
         return p12
 
 
-def update_pkcs12(id, password):
+def update_pkcs12(id, outputdir, password):
     """
         Update and existing PKCS12 file with a corresponding certificate.
         Arguments: id - unique identifier to identify certificate file
@@ -254,8 +254,8 @@ def update_pkcs12(id, password):
     """
 
     # st_cert=open(cert, 'rt').read()
-    pkcs12file = os.path.join(batchdir, id + '.p12')
-    certfile = os.path.join(batchdir, id + '.crt')
+    pkcs12file = os.path.join(outputdir, id + '.p12')
+    certfile = os.path.join(outputdir, id + '.crt')
     p12 = OpenSSL.crypto.load_pkcs12(open(pkcs12file, "rb").read(), password)
 
     cert = crypto.load_certificate(OpenSSL.crypto.FILETYPE_PEM, open(certfile, "r").read())
@@ -266,7 +266,7 @@ def update_pkcs12(id, password):
     return p12
 
 
-def generate_offline_keyandcsr(id, password, digest="sha256", **name):
+def generate_offline_keyandcsr(id, password, outputdir, digest="sha256", **name):
     """
     Generates a private key and csr and outputs to file.
     Arguments: id - unique identifier to identify key and csr. These will be out to files based on the id
@@ -285,8 +285,9 @@ def generate_offline_keyandcsr(id, password, digest="sha256", **name):
     :type password: object
     """
     logger.info('Start key/csr generation for id %s', id)
+    pkey = create_key_pair(keytype, keysize, keygen, id)
     # 1. Generate key pair using create_key_pair and output to temp file - id.pkey
-    keyfile = os.path.join(batchdir, id + '.pkey')
+    '''keyfile = os.path.join(batchdir, id + '.pkey')
     if os.path.exists(keyfile):
         # Identified duplicate key identifier - needs further investigation.
         logger.error('Private Key file for %s exists at %s aborting', id, keyfile)
@@ -294,10 +295,10 @@ def generate_offline_keyandcsr(id, password, digest="sha256", **name):
     else:
         pkey = create_key_pair(keytype, keysize, keygen, id)
         open(keyfile, "wb").write(crypto.dump_privatekey(crypto.FILETYPE_PEM, pkey, str(keycipher), b'password'))
-        logger.info('Private Key generated for %s and written to %s', id, keyfile)
+        logger.info('Private Key generated for %s and written to %s', id, keyfile)'''
 
     # 2. Generate CSR output to temp file - id.csr
-    csrfile = os.path.join(batchdir, id + '.csr')
+    csrfile = os.path.join(outputdir, id + '.csr')
 
     if os.path.exists(csrfile):
         logger.error('CSR file for %s exists at %s aborting', id, csrfile)
@@ -310,7 +311,7 @@ def generate_offline_keyandcsr(id, password, digest="sha256", **name):
 
     # 3. Generate P12 and output to file id.p12
 
-    create_pkcs12(id, pkey, cacert, password)
+    create_pkcs12(id, pkey, cacert, outputdir, password)
 
 
 def generate_online_cert(id, context):
@@ -419,11 +420,11 @@ def generate_online_cert(id, context):
         f.close()
 
 
-def update_offline_pkcs12(id, passphrase):
+def update_offline_pkcs12(id, outputdir, passphrase):
     """Updates the p12 with the correct certificates"""
     # Take Certs and update p12
     # Check public key matches private key in p12
     # Remove private keys and log
 
     # Update p12 and encrypt using password
-    pkcs12file = update_pkcs12(id, passphrase)
+    pkcs12file = update_pkcs12(id, outputdir, passphrase)
