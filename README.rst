@@ -30,3 +30,12 @@ You must configure the program using config/config.ini and config/logging.ini
 If you are using a HSM please install the HSM providers client libraries and update the config.
 The raapi folder is used if you are submitting certificates requests to a CA via the IoT SC Rest API
 You must invoke virtual environment prior to running any of the scripts.
+
+To Generate Keys and CSR's you can run:
+generatekeyandcsr -pkcs12pw <password> -r /home/userx/batch1_oem1/requests.txt
+
+To Generate Certificates using the CSR's
+generatecert -r /home/userx/batch1_oem1/requests.txt
+
+To Generate PKCS12's using the Certificates
+generatepkcs12 -pkcs12pw <password> -r /home/userx/batch1_oem1/requests.txt

@@ -35,12 +35,15 @@ raapiurl = config.get('RAAPISERVER', 'URL')
 pollinterval = config.get('RAAPISERVER', 'POLLINTERVAL')
 pollcount = config.get('RAAPISERVER', 'POLLCOUNT')
 rapkcs12 = config.get('RAAPISERVER', 'RAPKCS12')
+raapicert = config.get('RAAPISERVER', 'RAAPICERT')
+raapikey = config.get('RAAPISERVER', 'RAAPIKEY')
+raapicacerts = config.get('RAAPISERVER', 'RAAPICACERTS')
 raapidir = config.get('RAAPISERVER', 'RAAPICRED_DIR')
 
 # General processing
 batchsize = config.get('GENERAL', 'BATCHSIZE')
 threads = config.get('GENERAL', 'THREADS')
-batchdir = config.get('GENERAL', 'BATCHDIR')
+#batchdir = config.get('GENERAL', 'BATCHDIR')
 cacert = config.get('GENERAL', 'CACERT')
 
 # CRYPTO
@@ -314,7 +317,7 @@ def generate_offline_keyandcsr(id, password, outputdir, digest="sha256", **name)
     create_pkcs12(id, pkey, cacert, outputdir, password)
 
 
-def generate_online_cert(id, context):
+def generate_online_cert(id, context, batchdir):
     """Submits a csr to the MCS Rest API via HTTPS and updates the corresponding p12 with certificate
     Arguments: id - unique identifier to identify csr
                context - The context to submit the CSR to in order to get a certificate
@@ -345,8 +348,8 @@ def generate_online_cert(id, context):
     payload = {"csr": raapireq, "context_id": context}
     logger.info('Submit Request for cert order for id:%s to contextid:%s', id, context)
     certorderreq = requests.post(raapiurl + '/certificate_order', cert=(
-        raapidir + '/thingspace_client.crt', raapidir + '/thingspace_client.key'),
-                                 verify=(raapidir + '/thingspacecacerts.crt'), json=payload)
+        raapicert, raapikey),
+                                 verify=raapicacerts, json=payload)
 
     certorderresp = json.loads(certorderreq.text)
 
@@ -360,9 +363,9 @@ def generate_online_cert(id, context):
     certstatuspayload = {"csr": raapireq, "context_id": '4142'}
 
     certorderstatus = requests.get(raapiurl + '/certificate_order/' + str(certorderid) + '/status',
-                                   cert=(raapidir + '/thingspace_client.crt',
-                                         raapidir + '/thingspace_client.key'),
-                                   verify=(raapidir + '/thingspacecacerts.crt'))
+                                   cert=(raapicert,
+                                         raapikey),
+                                   verify=raapicacerts)
     # Loop configurable time to retrieve cert (hardcode 5 times)
     for i in range(0, 6):
         certorderstatusresp = json.loads(certorderstatus.text)
@@ -373,9 +376,9 @@ def generate_online_cert(id, context):
             # Call again
             certorderstatus = requests.get(
                 raapiurl + '/certificate_order/' + str(certorderid) + '/status', cert=(
-                    raapidir + '/thingspace_client.crt',
-                    raapidir + '/thingspace_client.key'),
-                verify=(raapidir + '/thingspacecacerts.crt'))
+                    raapicert,
+                    raapikey),
+                verify=raapicacerts)
         else:
             # ISSUED
             certid = certorderstatusresp['certId']
@@ -388,8 +391,8 @@ def generate_online_cert(id, context):
     headers = {'accept': 'application/x-x509-user-cert'}
     logger.info('Retrieving Cert ID:%s', str(certid))
     getcert = requests.get(raapiurl + '/certificate/' + str(certid), cert=(
-        raapidir + '/thingspace_client.crt', raapidir + '/thingspace_client.key'),
-                           verify=(raapidir + '/thingspacecacerts.crt'), headers=headers)
+        raapicert, raapikey),
+                           verify=raapicacerts, headers=headers)
     cert = getcert.text
 
     # Parse Certificate content to populate UserCredential Model.

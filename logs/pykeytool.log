@@ -175,3 +175,121 @@
 2018-07-03 16:14:17,166 - [pykeytool.pykeytool:265] - INFO - PKCS12 Created for id:343589898 and written to C:\Work\Temp\pykeytool\343589898.p12
 2018-07-03 16:14:17,167 - [__main__:42] - INFO - Processed Request Number: 2 out of 2
 2018-07-03 16:14:17,168 - [__main__:45] - INFO - ########### Finish Batch PKCS12 Update Process ###########
+2018-07-03 16:28:17,741 - [__main__:38] - INFO - ########### Starting Batch Key/CSR Generation ###########
+2018-07-03 16:28:17,741 - [__main__:39] - INFO - Reading Batch file from: C:\Work\Temp\pykeytool\requests.txt
+2018-07-03 16:28:17,744 - [__main__:48] - INFO - Generating Key and CSR for {'CN': '123456789', 'OU': 'OEM 5G ICL', 'O': 'Verizon Wireless', 'C': 'US'}
+2018-07-03 16:28:17,744 - [pykeytool.pykeytool:287] - INFO - Start key/csr generation for id 123456789
+2018-07-03 16:28:17,745 - [pykeytool.pykeytool:121] - DEBUG - Creating key in software keytype: crypto.TYPE_RSA keysize: 2048
+2018-07-03 16:28:18,038 - [pykeytool.pykeytool:245] - INFO - Created pkcs12 file for 123456789 at C:\Work\Temp\pykeytool\123456789.p12
+2018-07-03 16:28:18,039 - [__main__:50] - INFO - Processed Request Number: 1 out of 2
+2018-07-03 16:28:18,039 - [__main__:48] - INFO - Generating Key and CSR for {'CN': '343589898', 'OU': 'OEM 5G ICL', 'O': 'Verizon Wireless', 'C': 'US'}
+2018-07-03 16:28:18,039 - [pykeytool.pykeytool:287] - INFO - Start key/csr generation for id 343589898
+2018-07-03 16:28:18,040 - [pykeytool.pykeytool:121] - DEBUG - Creating key in software keytype: crypto.TYPE_RSA keysize: 2048
+2018-07-03 16:28:18,396 - [pykeytool.pykeytool:245] - INFO - Created pkcs12 file for 343589898 at C:\Work\Temp\pykeytool\343589898.p12
+2018-07-03 16:28:18,396 - [__main__:50] - INFO - Processed Request Number: 2 out of 2
+2018-07-03 16:28:18,397 - [__main__:52] - INFO - ########### Finished Batch Key/CSR Generation ###########
+2018-07-03 16:28:27,522 - [__main__:28] - INFO - ########### Starting Batch certificate Process ###########
+2018-07-03 16:28:27,527 - [__main__:36] - INFO - Generating Certificate for 123456789
+2018-07-03 16:28:27,530 - [pykeytool.pykeytool:346] - INFO - Submit Request for cert order for id:123456789 to contextid:14142
+2018-07-03 16:28:27,552 - [urllib3.connectionpool:823] - DEBUG - Starting new HTTPS connection (1): iot-restapi-poc.verizon.com:443
+2018-07-03 16:28:28,558 - [urllib3.connectionpool:393] - DEBUG - https://iot-restapi-poc.verizon.com:443 "POST /rarestapi/rest/certificate_order HTTP/1.1" 200 1297
+2018-07-03 16:28:28,559 - [pykeytool.pykeytool:357] - INFO - Cert Order ID:1073115016 for id:123456789 returned from IoT SC
+2018-07-03 16:28:28,567 - [urllib3.connectionpool:823] - DEBUG - Starting new HTTPS connection (1): iot-restapi-poc.verizon.com:443
+2018-07-03 16:28:29,309 - [urllib3.connectionpool:393] - DEBUG - https://iot-restapi-poc.verizon.com:443 "GET /rarestapi/rest/certificate_order/1073115016/status HTTP/1.1" 200 140
+2018-07-03 16:28:29,310 - [pykeytool.pykeytool:383] - INFO - Obtained Cert ID:746520352 for Cert Order ID:1073115016 is ISSUED on attempt 0
+2018-07-03 16:28:29,310 - [pykeytool.pykeytool:389] - INFO - Retrieving Cert ID:746520352
+2018-07-03 16:28:29,319 - [urllib3.connectionpool:823] - DEBUG - Starting new HTTPS connection (1): iot-restapi-poc.verizon.com:443
+2018-07-03 16:28:30,054 - [urllib3.connectionpool:393] - DEBUG - https://iot-restapi-poc.verizon.com:443 "GET /rarestapi/rest/certificate/746520352 HTTP/1.1" 200 1690
+2018-07-03 16:28:30,056 - [pykeytool.pykeytool:399] - INFO - Cert Serial Number:405340324006816171936561220168171666872371424693 for id:123456789
+2018-07-03 16:28:30,057 - [pykeytool.pykeytool:402] - INFO - Cert Subject CN:123456789 for id:123456789
+2018-07-03 16:28:30,057 - [pykeytool.pykeytool:405] - INFO - Cert Issuer Subject CN:ThingSpace Issuing CA for id:123456789
+2018-07-03 16:28:30,065 - [pykeytool.pykeytool:409] - INFO - Cert Expiry Date:2038-07-03 15:28:28 for id:123456789
+2018-07-03 16:28:30,070 - [__main__:38] - INFO - Processed Request Number: 1 out of 2
+2018-07-03 16:28:30,070 - [__main__:36] - INFO - Generating Certificate for 343589898
+2018-07-03 16:28:30,073 - [pykeytool.pykeytool:346] - INFO - Submit Request for cert order for id:343589898 to contextid:14142
+2018-07-03 16:28:30,079 - [urllib3.connectionpool:823] - DEBUG - Starting new HTTPS connection (1): iot-restapi-poc.verizon.com:443
+2018-07-03 16:28:30,865 - [urllib3.connectionpool:393] - DEBUG - https://iot-restapi-poc.verizon.com:443 "POST /rarestapi/rest/certificate_order HTTP/1.1" 200 1296
+2018-07-03 16:28:30,867 - [pykeytool.pykeytool:357] - INFO - Cert Order ID:158125887 for id:343589898 returned from IoT SC
+2018-07-03 16:28:30,874 - [urllib3.connectionpool:823] - DEBUG - Starting new HTTPS connection (1): iot-restapi-poc.verizon.com:443
+2018-07-03 16:28:31,615 - [urllib3.connectionpool:393] - DEBUG - https://iot-restapi-poc.verizon.com:443 "GET /rarestapi/rest/certificate_order/158125887/status HTTP/1.1" 200 140
+2018-07-03 16:28:31,617 - [pykeytool.pykeytool:383] - INFO - Obtained Cert ID:184109708 for Cert Order ID:158125887 is ISSUED on attempt 0
+2018-07-03 16:28:31,617 - [pykeytool.pykeytool:389] - INFO - Retrieving Cert ID:184109708
+2018-07-03 16:28:31,622 - [urllib3.connectionpool:823] - DEBUG - Starting new HTTPS connection (1): iot-restapi-poc.verizon.com:443
+2018-07-03 16:28:32,359 - [urllib3.connectionpool:393] - DEBUG - https://iot-restapi-poc.verizon.com:443 "GET /rarestapi/rest/certificate/184109708 HTTP/1.1" 200 1690
+2018-07-03 16:28:32,361 - [pykeytool.pykeytool:399] - INFO - Cert Serial Number:185753504801668871739026379584250608657549398609 for id:343589898
+2018-07-03 16:28:32,361 - [pykeytool.pykeytool:402] - INFO - Cert Subject CN:343589898 for id:343589898
+2018-07-03 16:28:32,362 - [pykeytool.pykeytool:405] - INFO - Cert Issuer Subject CN:ThingSpace Issuing CA for id:343589898
+2018-07-03 16:28:32,362 - [pykeytool.pykeytool:409] - INFO - Cert Expiry Date:2038-07-03 15:28:30 for id:343589898
+2018-07-03 16:28:32,366 - [__main__:38] - INFO - Processed Request Number: 2 out of 2
+2018-07-03 16:28:32,366 - [__main__:41] - INFO - ########### Finished Batch certificate Process ###########
+2018-07-03 16:41:48,606 - [__main__:28] - INFO - ########### Starting Batch certificate Process ###########
+2018-07-03 16:41:48,609 - [__main__:36] - INFO - Generating Certificate for 123456789
+2018-07-03 16:41:48,612 - [pykeytool.pykeytool:349] - INFO - Submit Request for cert order for id:123456789 to contextid:14142
+2018-07-03 16:43:47,772 - [__main__:28] - INFO - ########### Starting Batch certificate Process ###########
+2018-07-03 16:43:47,777 - [__main__:36] - INFO - Generating Certificate for 123456789
+2018-07-03 16:43:47,780 - [pykeytool.pykeytool:349] - INFO - Submit Request for cert order for id:123456789 to contextid:14142
+2018-07-03 16:43:47,811 - [urllib3.connectionpool:823] - DEBUG - Starting new HTTPS connection (1): iot-restapi-poc.verizon.com:443
+2018-07-03 16:43:48,980 - [urllib3.connectionpool:393] - DEBUG - https://iot-restapi-poc.verizon.com:443 "POST /rarestapi/rest/certificate_order HTTP/1.1" 200 1297
+2018-07-03 16:43:48,982 - [pykeytool.pykeytool:360] - INFO - Cert Order ID:1901075307 for id:123456789 returned from IoT SC
+2018-07-03 16:43:48,992 - [urllib3.connectionpool:823] - DEBUG - Starting new HTTPS connection (1): iot-restapi-poc.verizon.com:443
+2018-07-03 16:43:49,866 - [urllib3.connectionpool:393] - DEBUG - https://iot-restapi-poc.verizon.com:443 "GET /rarestapi/rest/certificate_order/1901075307/status HTTP/1.1" 200 140
+2018-07-03 16:43:49,867 - [pykeytool.pykeytool:386] - INFO - Obtained Cert ID:233561511 for Cert Order ID:1901075307 is ISSUED on attempt 0
+2018-07-03 16:43:49,868 - [pykeytool.pykeytool:392] - INFO - Retrieving Cert ID:233561511
+2018-07-03 16:43:49,875 - [urllib3.connectionpool:823] - DEBUG - Starting new HTTPS connection (1): iot-restapi-poc.verizon.com:443
+2018-07-03 16:43:50,696 - [urllib3.connectionpool:393] - DEBUG - https://iot-restapi-poc.verizon.com:443 "GET /rarestapi/rest/certificate/233561511 HTTP/1.1" 200 1690
+2018-07-03 16:43:50,698 - [pykeytool.pykeytool:402] - INFO - Cert Serial Number:253041374464356893371580563318681318457311977353 for id:123456789
+2018-07-03 16:43:50,698 - [pykeytool.pykeytool:405] - INFO - Cert Subject CN:123456789 for id:123456789
+2018-07-03 16:43:50,699 - [pykeytool.pykeytool:408] - INFO - Cert Issuer Subject CN:ThingSpace Issuing CA for id:123456789
+2018-07-03 16:43:50,709 - [pykeytool.pykeytool:412] - INFO - Cert Expiry Date:2038-07-03 15:43:48 for id:123456789
+2018-07-03 16:43:50,716 - [__main__:38] - INFO - Processed Request Number: 1 out of 2
+2018-07-03 16:43:50,717 - [__main__:36] - INFO - Generating Certificate for 343589898
+2018-07-03 16:43:50,724 - [pykeytool.pykeytool:349] - INFO - Submit Request for cert order for id:343589898 to contextid:14142
+2018-07-03 16:43:50,734 - [urllib3.connectionpool:823] - DEBUG - Starting new HTTPS connection (1): iot-restapi-poc.verizon.com:443
+2018-07-03 16:43:51,621 - [urllib3.connectionpool:393] - DEBUG - https://iot-restapi-poc.verizon.com:443 "POST /rarestapi/rest/certificate_order HTTP/1.1" 200 1296
+2018-07-03 16:43:51,625 - [pykeytool.pykeytool:360] - INFO - Cert Order ID:900175774 for id:343589898 returned from IoT SC
+2018-07-03 16:43:51,631 - [urllib3.connectionpool:823] - DEBUG - Starting new HTTPS connection (1): iot-restapi-poc.verizon.com:443
+2018-07-03 16:43:52,557 - [urllib3.connectionpool:393] - DEBUG - https://iot-restapi-poc.verizon.com:443 "GET /rarestapi/rest/certificate_order/900175774/status HTTP/1.1" 200 142
+2018-07-03 16:43:52,559 - [pykeytool.pykeytool:386] - INFO - Obtained Cert ID:1204599102 for Cert Order ID:900175774 is ISSUED on attempt 0
+2018-07-03 16:43:52,559 - [pykeytool.pykeytool:392] - INFO - Retrieving Cert ID:1204599102
+2018-07-03 16:43:52,567 - [urllib3.connectionpool:823] - DEBUG - Starting new HTTPS connection (1): iot-restapi-poc.verizon.com:443
+2018-07-03 16:43:53,364 - [urllib3.connectionpool:393] - DEBUG - https://iot-restapi-poc.verizon.com:443 "GET /rarestapi/rest/certificate/1204599102 HTTP/1.1" 200 1690
+2018-07-03 16:43:53,367 - [pykeytool.pykeytool:402] - INFO - Cert Serial Number:116709279361127841014723049947453972948718035757 for id:343589898
+2018-07-03 16:43:53,367 - [pykeytool.pykeytool:405] - INFO - Cert Subject CN:343589898 for id:343589898
+2018-07-03 16:43:53,367 - [pykeytool.pykeytool:408] - INFO - Cert Issuer Subject CN:ThingSpace Issuing CA for id:343589898
+2018-07-03 16:43:53,367 - [pykeytool.pykeytool:412] - INFO - Cert Expiry Date:2038-07-03 15:43:51 for id:343589898
+2018-07-03 16:43:53,372 - [__main__:38] - INFO - Processed Request Number: 2 out of 2
+2018-07-03 16:43:53,372 - [__main__:41] - INFO - ########### Finished Batch certificate Process ###########
+2018-07-03 16:46:16,630 - [__main__:28] - INFO - ########### Starting Batch certificate Process ###########
+2018-07-03 16:46:16,633 - [__main__:36] - INFO - Generating Certificate for 123456789
+2018-07-03 16:46:16,635 - [pykeytool.pykeytool:349] - INFO - Submit Request for cert order for id:123456789 to contextid:14142
+2018-07-03 16:46:16,653 - [urllib3.connectionpool:823] - DEBUG - Starting new HTTPS connection (1): iot-restapi-poc.verizon.com:443
+2018-07-03 16:46:17,467 - [urllib3.connectionpool:393] - DEBUG - https://iot-restapi-poc.verizon.com:443 "POST /rarestapi/rest/certificate_order HTTP/1.1" 200 1297
+2018-07-03 16:46:17,468 - [pykeytool.pykeytool:360] - INFO - Cert Order ID:1545193053 for id:123456789 returned from IoT SC
+2018-07-03 16:46:17,473 - [urllib3.connectionpool:823] - DEBUG - Starting new HTTPS connection (1): iot-restapi-poc.verizon.com:443
+2018-07-03 16:46:18,215 - [urllib3.connectionpool:393] - DEBUG - https://iot-restapi-poc.verizon.com:443 "GET /rarestapi/rest/certificate_order/1545193053/status HTTP/1.1" 200 142
+2018-07-03 16:46:18,216 - [pykeytool.pykeytool:386] - INFO - Obtained Cert ID:1916698939 for Cert Order ID:1545193053 is ISSUED on attempt 0
+2018-07-03 16:46:18,216 - [pykeytool.pykeytool:392] - INFO - Retrieving Cert ID:1916698939
+2018-07-03 16:46:18,220 - [urllib3.connectionpool:823] - DEBUG - Starting new HTTPS connection (1): iot-restapi-poc.verizon.com:443
+2018-07-03 16:46:18,957 - [urllib3.connectionpool:393] - DEBUG - https://iot-restapi-poc.verizon.com:443 "GET /rarestapi/rest/certificate/1916698939 HTTP/1.1" 200 1690
+2018-07-03 16:46:18,959 - [pykeytool.pykeytool:402] - INFO - Cert Serial Number:64970075100058937818035927065505560893068890778 for id:123456789
+2018-07-03 16:46:18,960 - [pykeytool.pykeytool:405] - INFO - Cert Subject CN:123456789 for id:123456789
+2018-07-03 16:46:18,960 - [pykeytool.pykeytool:408] - INFO - Cert Issuer Subject CN:ThingSpace Issuing CA for id:123456789
+2018-07-03 16:46:18,967 - [pykeytool.pykeytool:412] - INFO - Cert Expiry Date:2038-07-03 15:46:17 for id:123456789
+2018-07-03 16:46:18,970 - [__main__:38] - INFO - Processed Request Number: 1 out of 2
+2018-07-03 16:46:18,971 - [__main__:36] - INFO - Generating Certificate for 343589898
+2018-07-03 16:46:18,973 - [pykeytool.pykeytool:349] - INFO - Submit Request for cert order for id:343589898 to contextid:14142
+2018-07-03 16:46:18,979 - [urllib3.connectionpool:823] - DEBUG - Starting new HTTPS connection (1): iot-restapi-poc.verizon.com:443
+2018-07-03 16:46:19,748 - [urllib3.connectionpool:393] - DEBUG - https://iot-restapi-poc.verizon.com:443 "POST /rarestapi/rest/certificate_order HTTP/1.1" 200 1296
+2018-07-03 16:46:19,750 - [pykeytool.pykeytool:360] - INFO - Cert Order ID:555086233 for id:343589898 returned from IoT SC
+2018-07-03 16:46:19,756 - [urllib3.connectionpool:823] - DEBUG - Starting new HTTPS connection (1): iot-restapi-poc.verizon.com:443
+2018-07-03 16:46:20,490 - [urllib3.connectionpool:393] - DEBUG - https://iot-restapi-poc.verizon.com:443 "GET /rarestapi/rest/certificate_order/555086233/status HTTP/1.1" 200 142
+2018-07-03 16:46:20,491 - [pykeytool.pykeytool:386] - INFO - Obtained Cert ID:1348533819 for Cert Order ID:555086233 is ISSUED on attempt 0
+2018-07-03 16:46:20,492 - [pykeytool.pykeytool:392] - INFO - Retrieving Cert ID:1348533819
+2018-07-03 16:46:20,498 - [urllib3.connectionpool:823] - DEBUG - Starting new HTTPS connection (1): iot-restapi-poc.verizon.com:443
+2018-07-03 16:46:21,242 - [urllib3.connectionpool:393] - DEBUG - https://iot-restapi-poc.verizon.com:443 "GET /rarestapi/rest/certificate/1348533819 HTTP/1.1" 200 1690
+2018-07-03 16:46:21,244 - [pykeytool.pykeytool:402] - INFO - Cert Serial Number:569946262532537554237047532788650440127290533952 for id:343589898
+2018-07-03 16:46:21,245 - [pykeytool.pykeytool:405] - INFO - Cert Subject CN:343589898 for id:343589898
+2018-07-03 16:46:21,245 - [pykeytool.pykeytool:408] - INFO - Cert Issuer Subject CN:ThingSpace Issuing CA for id:343589898
+2018-07-03 16:46:21,246 - [pykeytool.pykeytool:412] - INFO - Cert Expiry Date:2038-07-03 15:46:19 for id:343589898
+2018-07-03 16:46:21,249 - [__main__:38] - INFO - Processed Request Number: 2 out of 2
+2018-07-03 16:46:21,250 - [__main__:41] - INFO - ########### Finished Batch certificate Process ###########
