@@ -3,12 +3,12 @@ pykeytool - IoT SC PKI Tool for Generating Keys and submitting csr's to IoT SC
 ==============================================================================
 
 A tool used to:
-* Generate RSA Keys in bulk based on Software or Hardware (using pkcs11)
-* Generate CSR's (Certificate Signing Requests)
-* Submit the CSR's to the IoT SC Rest API
-* Retrieve Certificates from IoT SC
-* Package the certificates and keys into pkcs12 files
-* Encrypt the pkcs12 files in batches of encrypted archive.
+    * Generate RSA Keys in bulk based on Software or Hardware (using pkcs11)
+    * Generate CSR's (Certificate Signing Requests)
+    * Submit the CSR's to the IoT SC Rest API
+    * Retrieve Certificates from IoT SC
+    * Package the certificates and keys into pkcs12 files
+    * Encrypt the pkcs12 files in batches of encrypted archive.
 
 Getting Started
 ---------------
@@ -21,14 +21,7 @@ Install from Pip:
 
 ::
 
-    pip install pykeytools
-
-
-Or build from source:
-
-::
-
-    python setup.py build
+    pip install requirements.txt
 
 
 Usage

@@ -10,7 +10,6 @@ Naked==0.1.31
 pycparser==2.18
 pycryptodomex==3.6.3
 PyKCS11==1.5.2
--e pykeytool==0.1
 pyOpenSSL==18.0.0
 PyYAML==3.12
 requests==2.19.1
