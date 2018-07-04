@@ -72,7 +72,7 @@ Install Requirements from Pip (ensure you have activate the pykeytoolenv:
 
 ::
 
-    pip install requirements.txt
+    pip install -r requirements.txt
 
 
 Usage
