@@ -2,6 +2,9 @@ import re
 
 
 # Count number of entries in input file.
+import OpenSSL
+
+
 def countoccurence(reqfile, desired):
 
     try:
@@ -31,3 +34,20 @@ def makedirs(batchnumber):
         print ("Creation of the directory %s failed" % batchdirectory)
     else:
         print ("Successfully created the directory %s " % batchdirectory)
+
+
+def check_associate_cert_with_private_key(cert, private_key):
+    """
+    :type cert: str
+    :type private_key: str
+    :rtype: bool
+    """
+
+    context = OpenSSL.SSL.Context(OpenSSL.SSL.TLSv1_METHOD)
+    context.use_privatekey(private_key)
+    context.use_certificate(cert)
+    try:
+        context.check_privatekey()
+        return True
+    except OpenSSL.SSL.Error:
+        return False

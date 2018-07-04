@@ -20,6 +20,9 @@ from OpenSSL import crypto
 from PyKCS11 import *
 from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives import serialization
+import pem
+import pykeytool.utils
+
 # TODO: Fix the base dir as this will be installed into site-packages
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -225,23 +228,23 @@ def create_pkcs12(id, pkey, cacert, outputdir, password):
     p12.set_privatekey(pkey)
 
     try:
-        f = open(cacert, 'rt')
-        cacertlist = []
-    except:
-        logger.warn("Certificate file '%s' could not be opened", cacert)
+        #f = open(cacert, 'rt')
+        cacertlist = pem.parse_file(cacert)
+        x509cacertlist = []
+        #cacertlist = []
+        for cert in range(len(cacertlist)):
+            x509cacertlist.append(OpenSSL.crypto.load_certificate(crypto.FILETYPE_PEM, cacertlist[cert].as_bytes()))
+        p12.set_ca_certificates(x509cacertlist)
+    except crypto.Error as e:
+        logger.warning("Certificate file '%s' could not be loaded: %s", cacert, e)
         return None
-    try:
-        try:
-            cacertlist.append(OpenSSL.crypto.load_certificate(crypto.FILETYPE_PEM, f.read()))
-            p12.set_ca_certificates(cacertlist)
-        except crypto.Error as e:
-            logger.warn("Certificate file '%s' could not be loaded: %s", cacert, e)
-            return None
-    finally:
-        f.close()
+    #except:
+        #logger.warning("Certificate file %s could not be opened", cacert)
+        #return None
+        #cacertlist.append(OpenSSL.crypto.load_certificate(crypto.FILETYPE_PEM, f.read()))
 
     if os.path.exists(p12file):
-        logger.warn("PKCS12 file exists for id %s at %s, aborting.", id, p12file)
+        logger.warning("PKCS12 file exists for id %s at %s, aborting.", id, p12file)
         sys.exit(1)
     else:
         open(p12file, 'wb').write(p12.export(passphrase=password, iter=2048, maciter=2048))
@@ -260,14 +263,18 @@ def update_pkcs12(id, outputdir, password):
     pkcs12file = os.path.join(outputdir, id + '.p12')
     certfile = os.path.join(outputdir, id + '.crt')
     p12 = OpenSSL.crypto.load_pkcs12(open(pkcs12file, "rb").read(), password)
-
+    privatekey = p12.get_privatekey()
     cert = crypto.load_certificate(OpenSSL.crypto.FILETYPE_PEM, open(certfile, "r").read())
-    p12.set_certificate(cert)
-    pkcs12handle = open(pkcs12file, "wb")
-    pkcs12handle.write(p12.export(passphrase=password, iter=2048, maciter=2048))
-    logger.info('PKCS12 Created for id:%s and written to %s', id, pkcs12file)
-    return p12
-
+    # Check certificate matches private key
+    if pykeytool.utils.check_associate_cert_with_private_key(cert, privatekey):
+        p12.set_certificate(cert)
+        pkcs12handle = open(pkcs12file, "wb")
+        pkcs12handle.write(p12.export(passphrase=password, iter=2048, maciter=2048))
+        logger.info('PKCS12 Created for id:%s and written to %s', id, pkcs12file)
+        return p12
+    else:
+        logger.info('PKCS12 Creation failed for id:%s', id)
+        sys.exit(1)
 
 def generate_offline_keyandcsr(id, password, outputdir, digest="sha256", **name):
     """
