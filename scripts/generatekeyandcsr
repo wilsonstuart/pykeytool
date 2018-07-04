@@ -7,10 +7,12 @@ __author__ = 'Stuart Wilson'
 Script to generate batch of keys and csr's based on a request file as input:
 """
 
-import fileinput
-import os
-import logging.config
 import argparse
+import fileinput
+import glob
+import logging.config
+import os
+
 
 from pykeytool.pykeytool import generate_offline_keyandcsr
 
@@ -35,6 +37,7 @@ if __name__ == '__main__':
 
     # Identify the directory to write the output to.
     requestdir = os.path.dirname(os.path.abspath(args.requestfile))
+    # Create Directories
     logger.info('########### Starting Batch Key/CSR Generation ###########')
     logger.info('Reading Batch file from: %s', args.requestfile)
     f_input = fileinput.input(files=args.requestfile)
@@ -49,4 +52,8 @@ if __name__ == '__main__':
         generate_offline_keyandcsr(id, args.pkcs12password, requestdir, digest="sha256", **name)
         logger.info('Processed Request Number: %s out of %s', lineno, count)
     f_input.close()
+
+    # Checking and Tar up the csr's
+    if len(glob.glob1(requestdir, "*.csr")) == count:
+        logger.info('Number of CSR files created matches the number of requests in request file: %s', count)
     logger.info('########### Finished Batch Key/CSR Generation ###########')

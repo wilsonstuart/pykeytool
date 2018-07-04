@@ -1,10 +1,8 @@
 import re
-
+import OpenSSL
+from os import listdir
 
 # Count number of entries in input file.
-import OpenSSL
-
-
 def countoccurence(reqfile, desired):
 
     try:
@@ -22,7 +20,7 @@ def countoccurence(reqfile, desired):
 def makedirs(batchnumber):
     # detect the current working directory and print it
     path = os.getcwd()
-    print ("The current working directory is %s" % path)
+    print("The current working directory is %s" % path)
 
     batchdiretory = os.path.join(path, batchnumber)
 
@@ -30,16 +28,17 @@ def makedirs(batchnumber):
         os.mkdir(batchdiretory)
         os.mkdir(batchdirectory + '/p12')
         os.mkdir(batchdirectory + '/csr')
+        os.mkdir(batchdirectory + '/cert')
     except OSError:
-        print ("Creation of the directory %s failed" % batchdirectory)
+        print("Creation of the directory %s failed" % batchdirectory)
     else:
-        print ("Successfully created the directory %s " % batchdirectory)
+        print("Successfully created the directory %s " % batchdirectory)
 
 
 def check_associate_cert_with_private_key(cert, private_key):
     """
-    :type cert: str
-    :type private_key: str
+    :type cert: X509Certificate
+    :type private_key: Private Key Object
     :rtype: bool
     """
 
@@ -51,3 +50,5 @@ def check_associate_cert_with_private_key(cert, private_key):
         return True
     except OpenSSL.SSL.Error:
         return False
+
+

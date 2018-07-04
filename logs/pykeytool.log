@@ -464,3 +464,205 @@
 2018-07-04 18:01:13,567 - [pykeytool.pykeytool:272] - INFO - PKCS12 Created for id:343589898 and written to C:\Work\Temp\pykeytool\343589898.p12
 2018-07-04 18:01:13,568 - [__main__:42] - INFO - Processed Request Number: 2 out of 2
 2018-07-04 18:01:13,568 - [__main__:45] - INFO - ########### Finish Batch PKCS12 Update Process ###########
+2018-07-04 18:41:05,634 - [__main__:41] - INFO - ########### Starting Batch Key/CSR Generation ###########
+2018-07-04 18:41:05,635 - [__main__:42] - INFO - Reading Batch file from: C:\Work\Temp\pykeytool\requests.txt
+2018-07-04 18:41:05,637 - [__main__:51] - INFO - Generating Key and CSR for {'CN': '123456789', 'OU': 'OEM 5G ICL', 'O': 'Verizon Wireless', 'C': 'US'}
+2018-07-04 18:41:05,637 - [pykeytool.pykeytool:297] - INFO - Start key/csr generation for id 123456789
+2018-07-04 18:41:05,637 - [pykeytool.pykeytool:127] - DEBUG - Creating key in software keytype: crypto.TYPE_RSA keysize: 2048
+2018-07-04 18:41:05,890 - [pykeytool.pykeytool:251] - INFO - Created pkcs12 file for 123456789 at C:\Work\Temp\pykeytool\123456789.p12
+2018-07-04 18:41:05,890 - [__main__:53] - INFO - Processed Request Number: 1 out of 2
+2018-07-04 18:41:05,891 - [__main__:51] - INFO - Generating Key and CSR for {'CN': '343589898', 'OU': 'OEM 5G ICL', 'O': 'Verizon Wireless', 'C': 'US'}
+2018-07-04 18:41:05,891 - [pykeytool.pykeytool:297] - INFO - Start key/csr generation for id 343589898
+2018-07-04 18:41:05,891 - [pykeytool.pykeytool:127] - DEBUG - Creating key in software keytype: crypto.TYPE_RSA keysize: 2048
+2018-07-04 18:41:06,310 - [pykeytool.pykeytool:251] - INFO - Created pkcs12 file for 343589898 at C:\Work\Temp\pykeytool\343589898.p12
+2018-07-04 18:41:06,310 - [__main__:53] - INFO - Processed Request Number: 2 out of 2
+2018-07-04 18:41:39,617 - [__main__:42] - INFO - ########### Starting Batch Key/CSR Generation ###########
+2018-07-04 18:41:39,617 - [__main__:43] - INFO - Reading Batch file from: C:\Work\Temp\pykeytool\requests.txt
+2018-07-04 18:41:39,620 - [__main__:52] - INFO - Generating Key and CSR for {'CN': '123456789', 'OU': 'OEM 5G ICL', 'O': 'Verizon Wireless', 'C': 'US'}
+2018-07-04 18:41:39,620 - [pykeytool.pykeytool:297] - INFO - Start key/csr generation for id 123456789
+2018-07-04 18:41:39,621 - [pykeytool.pykeytool:127] - DEBUG - Creating key in software keytype: crypto.TYPE_RSA keysize: 2048
+2018-07-04 18:41:39,716 - [pykeytool.pykeytool:251] - INFO - Created pkcs12 file for 123456789 at C:\Work\Temp\pykeytool\123456789.p12
+2018-07-04 18:41:39,717 - [__main__:54] - INFO - Processed Request Number: 1 out of 2
+2018-07-04 18:41:39,717 - [__main__:52] - INFO - Generating Key and CSR for {'CN': '343589898', 'OU': 'OEM 5G ICL', 'O': 'Verizon Wireless', 'C': 'US'}
+2018-07-04 18:41:39,717 - [pykeytool.pykeytool:297] - INFO - Start key/csr generation for id 343589898
+2018-07-04 18:41:39,717 - [pykeytool.pykeytool:127] - DEBUG - Creating key in software keytype: crypto.TYPE_RSA keysize: 2048
+2018-07-04 18:41:40,223 - [pykeytool.pykeytool:251] - INFO - Created pkcs12 file for 343589898 at C:\Work\Temp\pykeytool\343589898.p12
+2018-07-04 18:41:40,223 - [__main__:54] - INFO - Processed Request Number: 2 out of 2
+2018-07-04 18:41:40,229 - [__main__:59] - INFO - Number of CSR files created matches the number of requests in request file: 2
+2018-07-04 18:43:51,063 - [__main__:42] - INFO - ########### Starting Batch Key/CSR Generation ###########
+2018-07-04 18:43:51,063 - [__main__:43] - INFO - Reading Batch file from: C:\Work\Temp\pykeytool\requests.txt
+2018-07-04 18:43:51,066 - [__main__:52] - INFO - Generating Key and CSR for {'CN': '123456789', 'OU': 'OEM 5G ICL', 'O': 'Verizon Wireless', 'C': 'US'}
+2018-07-04 18:43:51,066 - [pykeytool.pykeytool:297] - INFO - Start key/csr generation for id 123456789
+2018-07-04 18:43:51,067 - [pykeytool.pykeytool:127] - DEBUG - Creating key in software keytype: crypto.TYPE_RSA keysize: 2048
+2018-07-04 18:43:51,396 - [pykeytool.pykeytool:251] - INFO - Created pkcs12 file for 123456789 at C:\Work\Temp\pykeytool\123456789.p12
+2018-07-04 18:43:51,397 - [__main__:54] - INFO - Processed Request Number: 1 out of 2
+2018-07-04 18:43:51,397 - [__main__:52] - INFO - Generating Key and CSR for {'CN': '343589898', 'OU': 'OEM 5G ICL', 'O': 'Verizon Wireless', 'C': 'US'}
+2018-07-04 18:43:51,397 - [pykeytool.pykeytool:297] - INFO - Start key/csr generation for id 343589898
+2018-07-04 18:43:51,397 - [pykeytool.pykeytool:127] - DEBUG - Creating key in software keytype: crypto.TYPE_RSA keysize: 2048
+2018-07-04 18:43:51,770 - [pykeytool.pykeytool:251] - INFO - Created pkcs12 file for 343589898 at C:\Work\Temp\pykeytool\343589898.p12
+2018-07-04 18:43:51,770 - [__main__:54] - INFO - Processed Request Number: 2 out of 2
+2018-07-04 18:43:51,772 - [__main__:59] - INFO - Number of CSR files created matches the number of requests in request file: 2
+2018-07-04 18:43:51,783 - [__main__:65] - INFO - ########### Finished Batch Key/CSR Generation ###########
+2018-07-04 18:49:35,956 - [__main__:42] - INFO - ########### Starting Batch Key/CSR Generation ###########
+2018-07-04 18:49:35,956 - [__main__:43] - INFO - Reading Batch file from: C:\Work\Temp\pykeytool\requests.txt
+2018-07-04 18:49:35,958 - [__main__:52] - INFO - Generating Key and CSR for {'CN': '123456789', 'OU': 'OEM 5G ICL', 'O': 'Verizon Wireless', 'C': 'US'}
+2018-07-04 18:49:35,958 - [pykeytool.pykeytool:297] - INFO - Start key/csr generation for id 123456789
+2018-07-04 18:49:35,958 - [pykeytool.pykeytool:127] - DEBUG - Creating key in software keytype: crypto.TYPE_RSA keysize: 2048
+2018-07-04 18:49:36,168 - [pykeytool.pykeytool:251] - INFO - Created pkcs12 file for 123456789 at C:\Work\Temp\pykeytool\123456789.p12
+2018-07-04 18:49:36,169 - [__main__:54] - INFO - Processed Request Number: 1 out of 2
+2018-07-04 18:49:36,169 - [__main__:52] - INFO - Generating Key and CSR for {'CN': '343589898', 'OU': 'OEM 5G ICL', 'O': 'Verizon Wireless', 'C': 'US'}
+2018-07-04 18:49:36,169 - [pykeytool.pykeytool:297] - INFO - Start key/csr generation for id 343589898
+2018-07-04 18:49:36,169 - [pykeytool.pykeytool:127] - DEBUG - Creating key in software keytype: crypto.TYPE_RSA keysize: 2048
+2018-07-04 18:49:36,560 - [pykeytool.pykeytool:251] - INFO - Created pkcs12 file for 343589898 at C:\Work\Temp\pykeytool\343589898.p12
+2018-07-04 18:49:36,560 - [__main__:54] - INFO - Processed Request Number: 2 out of 2
+2018-07-04 18:49:36,561 - [__main__:59] - INFO - Number of CSR files created matches the number of requests in request file: 2
+2018-07-04 18:52:21,024 - [__main__:42] - INFO - ########### Starting Batch Key/CSR Generation ###########
+2018-07-04 18:52:21,024 - [__main__:43] - INFO - Reading Batch file from: C:\Work\Temp\pykeytool\requests.txt
+2018-07-04 18:52:21,029 - [__main__:52] - INFO - Generating Key and CSR for {'CN': '123456789', 'OU': 'OEM 5G ICL', 'O': 'Verizon Wireless', 'C': 'US'}
+2018-07-04 18:52:21,029 - [pykeytool.pykeytool:297] - INFO - Start key/csr generation for id 123456789
+2018-07-04 18:52:21,029 - [pykeytool.pykeytool:127] - DEBUG - Creating key in software keytype: crypto.TYPE_RSA keysize: 2048
+2018-07-04 18:52:21,197 - [pykeytool.pykeytool:251] - INFO - Created pkcs12 file for 123456789 at C:\Work\Temp\pykeytool\123456789.p12
+2018-07-04 18:52:21,197 - [__main__:54] - INFO - Processed Request Number: 1 out of 2
+2018-07-04 18:52:21,197 - [__main__:52] - INFO - Generating Key and CSR for {'CN': '343589898', 'OU': 'OEM 5G ICL', 'O': 'Verizon Wireless', 'C': 'US'}
+2018-07-04 18:52:21,198 - [pykeytool.pykeytool:297] - INFO - Start key/csr generation for id 343589898
+2018-07-04 18:52:21,198 - [pykeytool.pykeytool:127] - DEBUG - Creating key in software keytype: crypto.TYPE_RSA keysize: 2048
+2018-07-04 18:52:21,487 - [pykeytool.pykeytool:251] - INFO - Created pkcs12 file for 343589898 at C:\Work\Temp\pykeytool\343589898.p12
+2018-07-04 18:52:21,488 - [__main__:54] - INFO - Processed Request Number: 2 out of 2
+2018-07-04 18:52:21,489 - [__main__:59] - INFO - Number of CSR files created matches the number of requests in request file: 2
+2018-07-04 18:52:21,510 - [__main__:67] - INFO - ########### Finished Batch Key/CSR Generation ###########
+2018-07-04 18:53:31,158 - [__main__:42] - INFO - ########### Starting Batch Key/CSR Generation ###########
+2018-07-04 18:53:31,158 - [__main__:43] - INFO - Reading Batch file from: C:\Work\Temp\pykeytool\requests.txt
+2018-07-04 18:53:31,160 - [__main__:52] - INFO - Generating Key and CSR for {'CN': '123456789', 'OU': 'OEM 5G ICL', 'O': 'Verizon Wireless', 'C': 'US'}
+2018-07-04 18:53:31,161 - [pykeytool.pykeytool:297] - INFO - Start key/csr generation for id 123456789
+2018-07-04 18:53:31,161 - [pykeytool.pykeytool:127] - DEBUG - Creating key in software keytype: crypto.TYPE_RSA keysize: 2048
+2018-07-04 18:53:31,370 - [pykeytool.pykeytool:251] - INFO - Created pkcs12 file for 123456789 at C:\Work\Temp\pykeytool\123456789.p12
+2018-07-04 18:53:31,370 - [__main__:54] - INFO - Processed Request Number: 1 out of 2
+2018-07-04 18:53:31,370 - [__main__:52] - INFO - Generating Key and CSR for {'CN': '343589898', 'OU': 'OEM 5G ICL', 'O': 'Verizon Wireless', 'C': 'US'}
+2018-07-04 18:53:31,371 - [pykeytool.pykeytool:297] - INFO - Start key/csr generation for id 343589898
+2018-07-04 18:53:31,371 - [pykeytool.pykeytool:127] - DEBUG - Creating key in software keytype: crypto.TYPE_RSA keysize: 2048
+2018-07-04 18:53:31,623 - [pykeytool.pykeytool:251] - INFO - Created pkcs12 file for 343589898 at C:\Work\Temp\pykeytool\343589898.p12
+2018-07-04 18:53:31,623 - [__main__:54] - INFO - Processed Request Number: 2 out of 2
+2018-07-04 18:53:31,625 - [__main__:59] - INFO - Number of CSR files created matches the number of requests in request file: 2
+2018-07-04 18:53:31,633 - [__main__:66] - INFO - Created encrypted CSR zip file to be transferred to RA C:\Work\Temp\pykeytool\requests.txt_csr.zip
+2018-07-04 18:53:31,633 - [__main__:67] - INFO - ########### Finished Batch Key/CSR Generation ###########
+2018-07-04 18:59:09,390 - [__main__:42] - INFO - ########### Starting Batch Key/CSR Generation ###########
+2018-07-04 18:59:09,391 - [__main__:43] - INFO - Reading Batch file from: C:\Work\Temp\pykeytool\requests.txt
+2018-07-04 18:59:09,393 - [__main__:52] - INFO - Generating Key and CSR for {'CN': '123456789', 'OU': 'OEM 5G ICL', 'O': 'Verizon Wireless', 'C': 'US'}
+2018-07-04 18:59:09,393 - [pykeytool.pykeytool:297] - INFO - Start key/csr generation for id 123456789
+2018-07-04 18:59:09,393 - [pykeytool.pykeytool:127] - DEBUG - Creating key in software keytype: crypto.TYPE_RSA keysize: 2048
+2018-07-04 18:59:09,551 - [pykeytool.pykeytool:251] - INFO - Created pkcs12 file for 123456789 at C:\Work\Temp\pykeytool\123456789.p12
+2018-07-04 18:59:09,551 - [__main__:54] - INFO - Processed Request Number: 1 out of 2
+2018-07-04 18:59:09,551 - [__main__:52] - INFO - Generating Key and CSR for {'CN': '343589898', 'OU': 'OEM 5G ICL', 'O': 'Verizon Wireless', 'C': 'US'}
+2018-07-04 18:59:09,551 - [pykeytool.pykeytool:297] - INFO - Start key/csr generation for id 343589898
+2018-07-04 18:59:09,552 - [pykeytool.pykeytool:127] - DEBUG - Creating key in software keytype: crypto.TYPE_RSA keysize: 2048
+2018-07-04 18:59:09,923 - [pykeytool.pykeytool:251] - INFO - Created pkcs12 file for 343589898 at C:\Work\Temp\pykeytool\343589898.p12
+2018-07-04 18:59:09,923 - [__main__:54] - INFO - Processed Request Number: 2 out of 2
+2018-07-04 18:59:09,925 - [__main__:59] - INFO - Number of CSR files created matches the number of requests in request file: 2
+2018-07-04 18:59:09,933 - [__main__:66] - INFO - Created encrypted CSR zip file to be transferred to RA C:\Work\Temp\pykeytool\requests.txt_csr.zip
+2018-07-04 18:59:09,934 - [__main__:67] - INFO - ########### Finished Batch Key/CSR Generation ###########
+2018-07-04 19:07:25,662 - [__main__:41] - INFO - ########### Starting Batch Key/CSR Generation ###########
+2018-07-04 19:07:25,663 - [__main__:42] - INFO - Reading Batch file from: C:\Work\Temp\pykeytool\requests.txt
+2018-07-04 19:07:25,665 - [__main__:51] - INFO - Generating Key and CSR for {'CN': '123456789', 'OU': 'OEM 5G ICL', 'O': 'Verizon Wireless', 'C': 'US'}
+2018-07-04 19:07:25,665 - [pykeytool.pykeytool:297] - INFO - Start key/csr generation for id 123456789
+2018-07-04 19:07:25,665 - [pykeytool.pykeytool:127] - DEBUG - Creating key in software keytype: crypto.TYPE_RSA keysize: 2048
+2018-07-04 19:07:25,821 - [pykeytool.pykeytool:251] - INFO - Created pkcs12 file for 123456789 at C:\Work\Temp\pykeytool\123456789.p12
+2018-07-04 19:07:25,821 - [__main__:53] - INFO - Processed Request Number: 1 out of 2
+2018-07-04 19:07:25,821 - [__main__:51] - INFO - Generating Key and CSR for {'CN': '343589898', 'OU': 'OEM 5G ICL', 'O': 'Verizon Wireless', 'C': 'US'}
+2018-07-04 19:07:25,821 - [pykeytool.pykeytool:297] - INFO - Start key/csr generation for id 343589898
+2018-07-04 19:07:25,821 - [pykeytool.pykeytool:127] - DEBUG - Creating key in software keytype: crypto.TYPE_RSA keysize: 2048
+2018-07-04 19:07:26,292 - [pykeytool.pykeytool:251] - INFO - Created pkcs12 file for 343589898 at C:\Work\Temp\pykeytool\343589898.p12
+2018-07-04 19:07:26,292 - [__main__:53] - INFO - Processed Request Number: 2 out of 2
+2018-07-04 19:07:26,294 - [__main__:58] - INFO - Number of CSR files created matches the number of requests in request file: 2
+2018-07-04 19:07:26,294 - [__main__:59] - INFO - ########### Finished Batch Key/CSR Generation ###########
+2018-07-04 19:08:52,945 - [__main__:41] - INFO - ########### Starting Batch Key/CSR Generation ###########
+2018-07-04 19:08:52,945 - [__main__:42] - INFO - Reading Batch file from: C:\Work\Temp\pykeytool\requests.txt
+2018-07-04 19:08:52,948 - [__main__:51] - INFO - Generating Key and CSR for {'CN': '123456789', 'OU': 'OEM 5G ICL', 'O': 'Verizon Wireless', 'C': 'US'}
+2018-07-04 19:08:52,948 - [pykeytool.pykeytool:297] - INFO - Start key/csr generation for id 123456789
+2018-07-04 19:08:52,948 - [pykeytool.pykeytool:127] - DEBUG - Creating key in software keytype: crypto.TYPE_RSA keysize: 2048
+2018-07-04 19:08:53,296 - [pykeytool.pykeytool:251] - INFO - Created pkcs12 file for 123456789 at C:\Work\Temp\pykeytool\123456789.p12
+2018-07-04 19:08:53,296 - [__main__:53] - INFO - Processed Request Number: 1 out of 2
+2018-07-04 19:08:53,296 - [__main__:51] - INFO - Generating Key and CSR for {'CN': '343589898', 'OU': 'OEM 5G ICL', 'O': 'Verizon Wireless', 'C': 'US'}
+2018-07-04 19:08:53,297 - [pykeytool.pykeytool:297] - INFO - Start key/csr generation for id 343589898
+2018-07-04 19:08:53,297 - [pykeytool.pykeytool:127] - DEBUG - Creating key in software keytype: crypto.TYPE_RSA keysize: 2048
+2018-07-04 19:08:53,393 - [pykeytool.pykeytool:251] - INFO - Created pkcs12 file for 343589898 at C:\Work\Temp\pykeytool\343589898.p12
+2018-07-04 19:08:53,393 - [__main__:53] - INFO - Processed Request Number: 2 out of 2
+2018-07-04 19:08:53,395 - [__main__:58] - INFO - Number of CSR files created matches the number of requests in request file: 2
+2018-07-04 19:08:53,396 - [__main__:59] - INFO - ########### Finished Batch Key/CSR Generation ###########
+2018-07-04 19:08:59,556 - [__main__:28] - INFO - ########### Starting Batch certificate Process ###########
+2018-07-04 19:08:59,558 - [__main__:36] - INFO - Generating Certificate for 123456789
+2018-07-04 19:08:59,559 - [pykeytool.pykeytool:356] - INFO - Submit Request for cert order for id:123456789 to contextid:14142
+2018-07-04 19:08:59,572 - [urllib3.connectionpool:823] - DEBUG - Starting new HTTPS connection (1): iot-restapi-poc.verizon.com:443
+2018-07-04 19:09:00,740 - [urllib3.connectionpool:393] - DEBUG - https://iot-restapi-poc.verizon.com:443 "POST /rarestapi/rest/certificate_order HTTP/1.1" 200 1296
+2018-07-04 19:09:00,742 - [pykeytool.pykeytool:367] - INFO - Cert Order ID:236397866 for id:123456789 returned from IoT SC
+2018-07-04 19:09:00,748 - [urllib3.connectionpool:823] - DEBUG - Starting new HTTPS connection (1): iot-restapi-poc.verizon.com:443
+2018-07-04 19:09:01,489 - [urllib3.connectionpool:393] - DEBUG - https://iot-restapi-poc.verizon.com:443 "GET /rarestapi/rest/certificate_order/236397866/status HTTP/1.1" 200 140
+2018-07-04 19:09:01,491 - [pykeytool.pykeytool:393] - INFO - Obtained Cert ID:946849923 for Cert Order ID:236397866 is ISSUED on attempt 0
+2018-07-04 19:09:01,491 - [pykeytool.pykeytool:399] - INFO - Retrieving Cert ID:946849923
+2018-07-04 19:09:01,496 - [urllib3.connectionpool:823] - DEBUG - Starting new HTTPS connection (1): iot-restapi-poc.verizon.com:443
+2018-07-04 19:09:02,247 - [urllib3.connectionpool:393] - DEBUG - https://iot-restapi-poc.verizon.com:443 "GET /rarestapi/rest/certificate/946849923 HTTP/1.1" 200 1690
+2018-07-04 19:09:02,249 - [pykeytool.pykeytool:409] - INFO - Cert Serial Number:151593015166872315094570374520444369308917317965 for id:123456789
+2018-07-04 19:09:02,249 - [pykeytool.pykeytool:412] - INFO - Cert Subject CN:123456789 for id:123456789
+2018-07-04 19:09:02,250 - [pykeytool.pykeytool:415] - INFO - Cert Issuer Subject CN:ThingSpace Issuing CA for id:123456789
+2018-07-04 19:09:02,258 - [pykeytool.pykeytool:419] - INFO - Cert Expiry Date:2038-07-04 18:09:00 for id:123456789
+2018-07-04 19:09:02,262 - [__main__:38] - INFO - Processed Request Number: 1 out of 2
+2018-07-04 19:09:02,263 - [__main__:36] - INFO - Generating Certificate for 343589898
+2018-07-04 19:09:02,265 - [pykeytool.pykeytool:356] - INFO - Submit Request for cert order for id:343589898 to contextid:14142
+2018-07-04 19:09:02,272 - [urllib3.connectionpool:823] - DEBUG - Starting new HTTPS connection (1): iot-restapi-poc.verizon.com:443
+2018-07-04 19:09:03,043 - [urllib3.connectionpool:393] - DEBUG - https://iot-restapi-poc.verizon.com:443 "POST /rarestapi/rest/certificate_order HTTP/1.1" 200 1297
+2018-07-04 19:09:03,045 - [pykeytool.pykeytool:367] - INFO - Cert Order ID:1591302513 for id:343589898 returned from IoT SC
+2018-07-04 19:09:03,052 - [urllib3.connectionpool:823] - DEBUG - Starting new HTTPS connection (1): iot-restapi-poc.verizon.com:443
+2018-07-04 19:09:03,795 - [urllib3.connectionpool:393] - DEBUG - https://iot-restapi-poc.verizon.com:443 "GET /rarestapi/rest/certificate_order/1591302513/status HTTP/1.1" 200 140
+2018-07-04 19:09:03,798 - [pykeytool.pykeytool:393] - INFO - Obtained Cert ID:769428749 for Cert Order ID:1591302513 is ISSUED on attempt 0
+2018-07-04 19:09:03,799 - [pykeytool.pykeytool:399] - INFO - Retrieving Cert ID:769428749
+2018-07-04 19:09:03,806 - [urllib3.connectionpool:823] - DEBUG - Starting new HTTPS connection (1): iot-restapi-poc.verizon.com:443
+2018-07-04 19:09:04,556 - [urllib3.connectionpool:393] - DEBUG - https://iot-restapi-poc.verizon.com:443 "GET /rarestapi/rest/certificate/769428749 HTTP/1.1" 200 1690
+2018-07-04 19:09:04,558 - [pykeytool.pykeytool:409] - INFO - Cert Serial Number:125951168403460512149846506078033260207746264355 for id:343589898
+2018-07-04 19:09:04,558 - [pykeytool.pykeytool:412] - INFO - Cert Subject CN:343589898 for id:343589898
+2018-07-04 19:09:04,558 - [pykeytool.pykeytool:415] - INFO - Cert Issuer Subject CN:ThingSpace Issuing CA for id:343589898
+2018-07-04 19:09:04,558 - [pykeytool.pykeytool:419] - INFO - Cert Expiry Date:2038-07-04 18:09:02 for id:343589898
+2018-07-04 19:09:04,561 - [__main__:38] - INFO - Processed Request Number: 2 out of 2
+2018-07-04 19:10:07,260 - [__main__:29] - INFO - ########### Starting Batch certificate Process ###########
+2018-07-04 19:10:07,263 - [__main__:37] - INFO - Generating Certificate for 123456789
+2018-07-04 19:10:07,264 - [pykeytool.pykeytool:356] - INFO - Submit Request for cert order for id:123456789 to contextid:14142
+2018-07-04 19:10:07,277 - [urllib3.connectionpool:823] - DEBUG - Starting new HTTPS connection (1): iot-restapi-poc.verizon.com:443
+2018-07-04 19:10:08,050 - [urllib3.connectionpool:393] - DEBUG - https://iot-restapi-poc.verizon.com:443 "POST /rarestapi/rest/certificate_order HTTP/1.1" 200 1296
+2018-07-04 19:10:08,052 - [pykeytool.pykeytool:367] - INFO - Cert Order ID:673668391 for id:123456789 returned from IoT SC
+2018-07-04 19:10:08,057 - [urllib3.connectionpool:823] - DEBUG - Starting new HTTPS connection (1): iot-restapi-poc.verizon.com:443
+2018-07-04 19:10:08,805 - [urllib3.connectionpool:393] - DEBUG - https://iot-restapi-poc.verizon.com:443 "GET /rarestapi/rest/certificate_order/673668391/status HTTP/1.1" 200 142
+2018-07-04 19:10:08,807 - [pykeytool.pykeytool:393] - INFO - Obtained Cert ID:1198656442 for Cert Order ID:673668391 is ISSUED on attempt 0
+2018-07-04 19:10:08,808 - [pykeytool.pykeytool:399] - INFO - Retrieving Cert ID:1198656442
+2018-07-04 19:10:08,816 - [urllib3.connectionpool:823] - DEBUG - Starting new HTTPS connection (1): iot-restapi-poc.verizon.com:443
+2018-07-04 19:10:09,564 - [urllib3.connectionpool:393] - DEBUG - https://iot-restapi-poc.verizon.com:443 "GET /rarestapi/rest/certificate/1198656442 HTTP/1.1" 200 1690
+2018-07-04 19:10:09,566 - [pykeytool.pykeytool:409] - INFO - Cert Serial Number:341444105363090949146294800038642173238475346822 for id:123456789
+2018-07-04 19:10:09,567 - [pykeytool.pykeytool:412] - INFO - Cert Subject CN:123456789 for id:123456789
+2018-07-04 19:10:09,567 - [pykeytool.pykeytool:415] - INFO - Cert Issuer Subject CN:ThingSpace Issuing CA for id:123456789
+2018-07-04 19:10:09,575 - [pykeytool.pykeytool:419] - INFO - Cert Expiry Date:2038-07-04 18:10:07 for id:123456789
+2018-07-04 19:10:09,580 - [__main__:39] - INFO - Processed Request Number: 1 out of 2
+2018-07-04 19:10:09,580 - [__main__:37] - INFO - Generating Certificate for 343589898
+2018-07-04 19:10:09,583 - [pykeytool.pykeytool:356] - INFO - Submit Request for cert order for id:343589898 to contextid:14142
+2018-07-04 19:10:09,589 - [urllib3.connectionpool:823] - DEBUG - Starting new HTTPS connection (1): iot-restapi-poc.verizon.com:443
+2018-07-04 19:10:10,375 - [urllib3.connectionpool:393] - DEBUG - https://iot-restapi-poc.verizon.com:443 "POST /rarestapi/rest/certificate_order HTTP/1.1" 200 1295
+2018-07-04 19:10:10,377 - [pykeytool.pykeytool:367] - INFO - Cert Order ID:84620549 for id:343589898 returned from IoT SC
+2018-07-04 19:10:10,381 - [urllib3.connectionpool:823] - DEBUG - Starting new HTTPS connection (1): iot-restapi-poc.verizon.com:443
+2018-07-04 19:10:11,129 - [urllib3.connectionpool:393] - DEBUG - https://iot-restapi-poc.verizon.com:443 "GET /rarestapi/rest/certificate_order/84620549/status HTTP/1.1" 200 142
+2018-07-04 19:10:11,130 - [pykeytool.pykeytool:393] - INFO - Obtained Cert ID:1529313622 for Cert Order ID:84620549 is ISSUED on attempt 0
+2018-07-04 19:10:11,130 - [pykeytool.pykeytool:399] - INFO - Retrieving Cert ID:1529313622
+2018-07-04 19:10:11,135 - [urllib3.connectionpool:823] - DEBUG - Starting new HTTPS connection (1): iot-restapi-poc.verizon.com:443
+2018-07-04 19:10:11,869 - [urllib3.connectionpool:393] - DEBUG - https://iot-restapi-poc.verizon.com:443 "GET /rarestapi/rest/certificate/1529313622 HTTP/1.1" 200 1690
+2018-07-04 19:10:11,872 - [pykeytool.pykeytool:409] - INFO - Cert Serial Number:40890802811349276407582483117332740848200212299 for id:343589898
+2018-07-04 19:10:11,872 - [pykeytool.pykeytool:412] - INFO - Cert Subject CN:343589898 for id:343589898
+2018-07-04 19:10:11,873 - [pykeytool.pykeytool:415] - INFO - Cert Issuer Subject CN:ThingSpace Issuing CA for id:343589898
+2018-07-04 19:10:11,873 - [pykeytool.pykeytool:419] - INFO - Cert Expiry Date:2038-07-04 18:10:10 for id:343589898
+2018-07-04 19:10:11,878 - [__main__:39] - INFO - Processed Request Number: 2 out of 2
+2018-07-04 19:10:11,881 - [__main__:44] - INFO - Number of certificate files created matches the number of requests in request file: 2
+2018-07-04 19:10:11,882 - [__main__:45] - INFO - ########### Finished Batch certificate Process ###########
+2018-07-04 19:10:34,620 - [__main__:34] - INFO - ########### Starting Batch PKCS12 Update Process ###########
+2018-07-04 19:10:34,622 - [__main__:41] - INFO - Generating PKCS12 for 123456789
+2018-07-04 19:10:34,633 - [pykeytool.pykeytool:273] - INFO - PKCS12 Created for id:123456789 and written to C:\Work\Temp\pykeytool\123456789.p12
+2018-07-04 19:10:34,634 - [__main__:43] - INFO - Processed Request Number: 1 out of 2
+2018-07-04 19:10:34,634 - [__main__:41] - INFO - Generating PKCS12 for 343589898
+2018-07-04 19:10:34,645 - [pykeytool.pykeytool:273] - INFO - PKCS12 Created for id:343589898 and written to C:\Work\Temp\pykeytool\343589898.p12
+2018-07-04 19:10:34,646 - [__main__:43] - INFO - Processed Request Number: 2 out of 2
+2018-07-04 19:10:34,647 - [__main__:48] - INFO - Number of PKCS12 files created matches the number of requests in request file: 2
+2018-07-04 19:10:34,647 - [__main__:49] - INFO - ########### Finished Batch certificate Process ###########
+2018-07-04 19:10:34,647 - [__main__:50] - INFO - ########### Finish Batch PKCS12 Update Process ###########
