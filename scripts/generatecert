@@ -21,6 +21,8 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Generate Certificates using CSR files')
 
     parser.add_argument('-r', dest='requestfile', action='store', help='Request file located with csr files', required=True)
+    parser.add_argument('-c', dest='context', action='store', help='Context to submit CSR against', required=True)
+
 
     args = parser.parse_args()
     # Identify the directory to load and write the certificates to.
@@ -33,7 +35,7 @@ if __name__ == '__main__':
         #Strip off newline chars
         id = id.strip()
         #Generate Certificates
-        context = 14142
+        context = args.context
         logger.info('Generating Certificate for %s', id)
         pykeytool.pykeytool.generate_online_cert(id, context, requestdir)
         logger.info('Processed Request Number: %s out of %s', lineno, count)

@@ -83,10 +83,10 @@ The raapi folder is used if you are submitting certificates requests to a CA via
 You must invoke virtual environment prior to running any of the scripts.
 
 To Generate Keys and CSR's you can run:
-scripts/generatekeyandcsr -pkcs12pw <password> -r /home/userx/batch1_oem1/requests.txt
+scripts/generatekeyandcsr -pkcs12pw <password> -r /home/userx/batch1_oem1/requests.txt -ou <OrgUnit in DN to be used>
 
 To Generate Certificates using the CSR's
-scripts/generatecert -r /home/userx/batch1_oem1/requests.txt
+scripts/generatecert -r /home/userx/batch1_oem1/requests.txt -c <context id to be used>
 
 To Generate PKCS12's using the Certificates
 scripts/generatepkcs12 -pkcs12pw <password> -r /home/userx/batch1_oem1/requests.txt

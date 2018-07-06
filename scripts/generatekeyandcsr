@@ -32,6 +32,7 @@ if __name__ == '__main__':
                         help='Password used to protect PKCS12 files')
 
     parser.add_argument('-r', dest='requestfile', action='store', help='Request file to be processed', required=True)
+    parser.add_argument('-ou', dest='orgunit', action='store', help='Org unit to be used', required=True)
 
     args = parser.parse_args()
 
@@ -47,7 +48,7 @@ if __name__ == '__main__':
         # Strip off newline chars
         id = id.strip()
         # Generate offline
-        name = {"CN": id, "OU": "OEM 5G ICL", "O": "Verizon Wireless", "C": "US"}
+        name = {"CN": id, "OU": args.orgunit, "O": "Verizon Wireless", "C": "US"}
         logger.info('Generating Key and CSR for %s', name)
         generate_offline_keyandcsr(id, args.pkcs12password, requestdir, digest="sha256", **name)
         logger.info('Processed Request Number: %s out of %s', lineno, count)
