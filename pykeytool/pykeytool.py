@@ -22,6 +22,7 @@ from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives import serialization
 import pem
 import pykeytool.utils
+import hashlib
 
 # TODO: Fix the base dir as this will be installed into site-packages
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -265,6 +266,8 @@ def update_pkcs12(id, outputdir, password):
     p12 = OpenSSL.crypto.load_pkcs12(open(pkcs12file, "rb").read(), password)
     privatekey = p12.get_privatekey()
     cert = crypto.load_certificate(OpenSSL.crypto.FILETYPE_PEM, open(certfile, "r").read())
+    logger.info('SHA256 hash of Public Key Object for id:%s is %s', id, hashlib.sha256(crypto.dump_publickey(OpenSSL.crypto.FILETYPE_PEM, cert.get_pubkey())).hexdigest())
+    logger.info('SHA256 hash of Private Key Object for id:%s is %s', id, hashlib.sha256(crypto.dump_privatekey(OpenSSL.crypto.FILETYPE_PEM, privatekey)).hexdigest())
     # Check certificate matches private key
     if pykeytool.utils.check_associate_cert_with_private_key(cert, privatekey):
         p12.set_certificate(cert)
@@ -296,6 +299,10 @@ def generate_offline_keyandcsr(id, password, outputdir, digest="sha256", **name)
     """
     logger.info('Start key/csr generation for id %s', id)
     pkey = create_key_pair(keytype, keysize, keygen, id)
+    publickey = crypto.dump_publickey(OpenSSL.crypto.FILETYPE_PEM, pkey)
+    privatekey = crypto.dump_privatekey(OpenSSL.crypto.FILETYPE_PEM, pkey)
+    logger.info('SHA256 hash of Public Key Object for id:%s is %s', id, hashlib.sha256(publickey).hexdigest())
+    logger.info('SHA256 hash of Private Key Object for id:%s is %s', id, hashlib.sha256(privatekey).hexdigest())
     # 1. Generate key pair using create_key_pair and output to temp file - id.pkey
     '''keyfile = os.path.join(batchdir, id + '.pkey')
     if os.path.exists(keyfile):
@@ -318,6 +325,7 @@ def generate_offline_keyandcsr(id, password, outputdir, digest="sha256", **name)
         f = open(csrfile, "wb")
         f.write(OpenSSL.crypto.dump_certificate_request(OpenSSL.crypto.FILETYPE_PEM, csr))
         f.close()
+        logger.info('CSR file created for %s and written to %s', id, csrfile)
 
     # 3. Generate P12 and output to file id.p12
 
@@ -351,6 +359,8 @@ def generate_online_cert(id, context, batchdir):
 
     csrfile = os.path.join(batchdir, id + ".csr")
     csr = OpenSSL.crypto.load_certificate_request(OpenSSL.crypto.FILETYPE_PEM, open(csrfile, "rb").read())
+    publickey = crypto.dump_publickey(OpenSSL.crypto.FILETYPE_PEM, csr.get_pubkey())
+    logger.info('SHA256 hash of Public Key Object for id:%s is %s', id, hashlib.sha256(publickey).hexdigest())
     raapireq = OpenSSL.crypto.dump_certificate_request(OpenSSL.crypto.FILETYPE_PEM, csr).decode().replace('\n', '')
     payload = {"csr": raapireq, "context_id": context}
     logger.info('Submit Request for cert order for id:%s to contextid:%s', id, context)

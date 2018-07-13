@@ -2,12 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="85f551c9-e58c-427e-b44b-1e37959a8a65" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/config/config_prod.ini" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/pykeytool.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/logging.ini" beforeDir="false" afterPath="$PROJECT_DIR$/config/logging.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pykeytool/pykeytool.py" beforeDir="false" afterPath="$PROJECT_DIR$/pykeytool/pykeytool.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/generatecert" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/generatecert" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/generatekeyandcsr" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/generatekeyandcsr" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/generatepkcs12" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/generatepkcs12" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setup.py.BAK" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py.BAK" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,11 +18,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="pykeytool.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="pykeytool.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pykeytool/pykeytool.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="410">
-              <caret line="429" column="12" selection-start-line="429" selection-start-column="12" selection-end-line="429" selection-end-column="12" />
+            <state relative-caret-position="212">
+              <caret line="269" column="165" selection-start-line="269" selection-start-column="165" selection-end-line="269" selection-end-column="165" />
               <folding>
                 <element signature="e#341#360#0" expanded="true" />
               </folding>
@@ -30,22 +30,34 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="logging.ini" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/logging.ini">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="26" column="41" selection-start-line="26" selection-start-column="41" selection-end-line="26" selection-end-column="41" />
+      <file leaf-file-name="pykeytool.log" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/logs/pykeytool.log">
+          <provider selected="true" editor-type-id="LogFileEditorProvider">
+            <state relative-caret-position="-441">
+              <caret line="16" column="116" selection-start-line="16" selection-start-column="116" selection-end-line="16" selection-end-column="116" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="generatepkcs12" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scripts/generatepkcs12">
+      <file leaf-file-name="utils.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pykeytool/utils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="40" column="56" selection-start-line="40" selection-start-column="56" selection-end-line="40" selection-end-column="56" />
+            <state relative-caret-position="850">
+              <caret line="52" selection-start-line="52" selection-end-line="52" />
               <folding>
-                <element signature="e#176#202#0" expanded="true" />
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scripts/test.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="18" column="40" selection-start-line="18" selection-start-column="40" selection-end-line="18" selection-end-column="40" />
+              <folding>
+                <element signature="e#0#14#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -54,32 +66,11 @@
       <file leaf-file-name="generatekeyandcsr" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scripts/generatekeyandcsr">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="17" selection-start-line="17" selection-end-line="17" selection-end-column="70" />
+            <state relative-caret-position="796">
+              <caret line="53" column="75" selection-start-line="53" selection-start-column="70" selection-end-line="53" selection-end-column="75" />
               <folding>
-                <element signature="e#188#204#0" expanded="true" />
+                <element signature="e#188#203#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="generatecert" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scripts/generatecert">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="97">
-              <caret line="13" column="70" selection-start-line="13" selection-start-column="70" selection-end-line="13" selection-end-column="70" />
-              <folding>
-                <element signature="e#182#208#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="codecs.py" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36-32/Lib/codecs.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="381">
-              <caret line="308" selection-start-line="308" selection-end-line="308" />
             </state>
           </provider>
         </entry>
@@ -87,24 +78,49 @@
       <file leaf-file-name="config.ini" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/config.ini">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="11" lean-forward="true" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="23" />
+            <state relative-caret-position="459">
+              <caret line="27" column="12" selection-start-line="27" selection-start-column="12" selection-end-line="27" selection-end-column="18" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
+      <file leaf-file-name="setup.py.BAK" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/setup.py.BAK">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="15" column="24" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="generatecert" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scripts/generatecert">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="23" column="43" selection-start-line="23" selection-start-column="36" selection-end-line="23" selection-end-column="43" />
+              <folding>
+                <element signature="e#182#208#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.rst" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/README.rst">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1496">
+              <caret line="88" column="87" selection-start-line="88" selection-start-column="87" selection-end-line="88" selection-end-column="87" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="11" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
+            <state relative-caret-position="238">
+              <caret line="14" column="23" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
             </state>
           </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="requirements.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/requirements.txt">
-          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -136,6 +152,11 @@
       <find>rsa_key</find>
       <find>BASE_DIR</find>
       <find>batchdir</find>
+      <find>cacert</find>
+      <find>check_associate_cert_with_private_keyCreating key in hardware keytype:</find>
+      <find>create_cert_request</find>
+      <find>670eef3af9f81e102c08e946042a8f9b35ad84d04d5a34f0564416b7f66b1765</find>
+      <find>HEXDIGE</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -160,25 +181,26 @@
         <option value="$PROJECT_DIR$/pykeytool/generatepkcs12.py" />
         <option value="$PROJECT_DIR$/pykeytool/logging.ini" />
         <option value="$PROJECT_DIR$/pykeytool/config/logging.ini" />
-        <option value="$PROJECT_DIR$/scripts/test.py" />
-        <option value="$PROJECT_DIR$/pykeytool/utils.py" />
         <option value="$PROJECT_DIR$/pykeytool/__init__.py" />
         <option value="$PROJECT_DIR$/scripts/generatehsmkey.py" />
         <option value="$PROJECT_DIR$/scripts/generatekeyandcsr.py" />
         <option value="$PROJECT_DIR$/scripts/generatepkcs12.py" />
         <option value="$PROJECT_DIR$/scripts/generatecert.py" />
         <option value="$PROJECT_DIR$/scripts/generatehsmkey" />
-        <option value="$PROJECT_DIR$/config/config.ini" />
         <option value="$PROJECT_DIR$/pykeytool.egg-info/SOURCES.txt" />
         <option value="$PROJECT_DIR$/MANIFEST.in" />
         <option value="$PROJECT_DIR$/setup.py" />
-        <option value="$PROJECT_DIR$/README.rst" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/config/logging.ini" />
-        <option value="$PROJECT_DIR$/scripts/generatekeyandcsr" />
+        <option value="$PROJECT_DIR$/pykeytool/utils.py" />
         <option value="$PROJECT_DIR$/scripts/generatepkcs12" />
+        <option value="$PROJECT_DIR$/scripts/test.py" />
+        <option value="$PROJECT_DIR$/config/config.ini" />
+        <option value="$PROJECT_DIR$/scripts/generatekeyandcsr" />
         <option value="$PROJECT_DIR$/scripts/generatecert" />
+        <option value="$PROJECT_DIR$/README.rst" />
+        <option value="$PROJECT_DIR$/setup.py.BAK" />
         <option value="$PROJECT_DIR$/pykeytool/pykeytool.py" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -218,6 +240,11 @@
             <path>
               <item name="pykeytool" type="b2602c69:ProjectViewProjectNode" />
               <item name="pykeytool" type="462c0819:PsiDirectoryNode" />
+              <item name="raapi" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="pykeytool" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pykeytool" type="462c0819:PsiDirectoryNode" />
               <item name="scripts" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -236,14 +263,15 @@
     <property name="settings.editor.selected.configurable" value="configurable.group.project" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\V662778\PycharmProjects\pykeytool\config" />
+      <recent name="C:\Users\V662778\PycharmProjects\pykeytool\pykeytool" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\V662778\PycharmProjects\pykeytool" />
       <recent name="C:\Users\V662778\PycharmProjects\pykeytool\pykeytool\config" />
       <recent name="C:\Users\V662778\PycharmProjects\pykeytool\pykeytool\scripts" />
       <recent name="C:\Users\V662778\PycharmProjects\keygenp12\keygenp12" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\V662778\PycharmProjects\pykeytool\pykeytool" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -272,7 +300,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/scripts/generatecert" />
-      <option name="PARAMETERS" value="-d C:\Work\Temp\pykeytool\requests.txt" />
+      <option name="PARAMETERS" value="-r C:\Work\Temp\pykeytool\requests.txt -c 14142" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -308,7 +336,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/scripts/generatekeyandcsr" />
-      <option name="PARAMETERS" value="-pkcs12pw Verizon1! -r C:\Work\Temp\pykeytool\requests.txt" />
+      <option name="PARAMETERS" value="-pkcs12pw Verizon1! -r C:\Work\Temp\pykeytool\requests.txt -ou &quot;WNC 5G ICL Router&quot;" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -361,8 +389,8 @@
         <item itemvalue="Python.generatepkcs12" />
         <item itemvalue="Python.generatecert" />
         <item itemvalue="Python.generatekeyandcsr" />
-        <item itemvalue="Python.generatekeyandcsr (2)" />
         <item itemvalue="Python.test" />
+        <item itemvalue="Python.generatekeyandcsr (2)" />
       </list>
     </recent_temporary>
   </component>
@@ -392,42 +420,43 @@
     <frame x="-8" y="-8" width="1936" height="1186" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2402529" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2402529" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32919848" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50105375" side_tool="true" weight="0.42366412" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32919848" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32919848" />
       <window_info anchor="bottom" id="Python Console" order="7" sideWeight="0.49894625" weight="0.32919848" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49894625" visible="true" weight="0.42366412" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49894625" visible="true" weight="0.42366412" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32919848" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39885497" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection Results" order="8" weight="0.32919848" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32919848" />
     </layout>
     <layout-to-restore>
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32919848" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2402529" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32919848" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49894625" visible="true" weight="0.42366412" />
-      <window_info anchor="bottom" id="Python Console" order="8" sideWeight="0.49894625" weight="0.32919848" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32919848" />
+      <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39885497" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.32919848" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50105375" side_tool="true" weight="0.42366412" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32919848" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32919848" />
+      <window_info anchor="bottom" id="Python Console" order="8" sideWeight="0.49894625" weight="0.32919848" />
     </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -439,6 +468,13 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/scripts/test.py</url>
+          <line>32</line>
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">
@@ -446,31 +482,15 @@
           </properties>
         </breakpoint>
       </default-breakpoints>
-      <option name="time" value="16" />
+      <option name="time" value="24" />
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="PythonConfigurationType">
+        <watch expression="p12._cert" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/pykeytool/utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="56" selection-start-line="21" selection-start-column="56" selection-end-line="21" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/config.ini">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="21" selection-start-line="1" selection-start-column="21" selection-end-line="1" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/setup.py.BAK">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pykeytool/pykeytool.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -493,7 +513,7 @@
         <state relative-caret-position="34">
           <caret line="4" selection-start-line="4" selection-end-line="4" />
           <folding>
-            <element signature="e#188#204#0" expanded="true" />
+            <element signature="e#188#203#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -583,7 +603,7 @@
         <state relative-caret-position="357">
           <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
           <folding>
-            <element signature="e#188#204#0" expanded="true" />
+            <element signature="e#188#203#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -621,37 +641,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pykeytool/pykeytool.log">
-      <provider selected="true" editor-type-id="LogFileEditorProvider" />
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/testrsa.bin">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/rsa_key.bin">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="33" lean-forward="true" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pykeytool/utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="45" selection-start-line="19" selection-start-column="45" selection-end-line="19" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/pykeytool/pykeytool.log" />
+    <entry file="file://$PROJECT_DIR$/scripts/testrsa.bin" />
+    <entry file="file://$PROJECT_DIR$/scripts/rsa_key.bin" />
     <entry file="file://$PROJECT_DIR$/pykeytool/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -666,21 +658,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MANIFEST">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pykeytool.egg-info/dependency_links.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pykeytool.egg-info/not-zip-safe">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pykeytool.egg-info/PKG-INFO">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pykeytool.egg-info/top_level.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/MANIFEST" />
+    <entry file="file://$PROJECT_DIR$/pykeytool.egg-info/dependency_links.txt" />
+    <entry file="file://$PROJECT_DIR$/pykeytool.egg-info/not-zip-safe" />
+    <entry file="file://$PROJECT_DIR$/pykeytool.egg-info/PKG-INFO" />
+    <entry file="file://$PROJECT_DIR$/pykeytool.egg-info/top_level.txt" />
     <entry file="file://$PROJECT_DIR$/MANIFEST.in">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -688,48 +670,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pykeytool.egg-info/requires.txt">
+    <entry file="file://$PROJECT_DIR$/pykeytool.egg-info/requires.txt" />
+    <entry file="file://$PROJECT_DIR$/pykeytool.egg-info/SOURCES.txt" />
+    <entry file="file://$PROJECT_DIR$/scripts/generatehsmkey">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/setup.py.BAK">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="30" column="17" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pykeytool.egg-info/SOURCES.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="22" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.rst">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="11" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
+        <state relative-caret-position="17">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/requirements.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/logs/pykeytool.log">
-      <provider selected="true" editor-type-id="LogFileEditorProvider">
-        <state relative-caret-position="85">
-          <caret line="5" column="104" selection-start-line="5" selection-start-column="100" selection-end-line="5" selection-end-column="104" />
+    <entry file="file://$PROJECT_DIR$/scripts/generatepkcs12">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="335">
+          <caret line="41" column="77" selection-start-line="41" selection-start-column="77" selection-end-line="41" selection-end-column="77" />
+          <folding>
+            <element signature="e#176#202#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/venv/pykeytool/Lib/site-packages/cryptography/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="126" selection-start-line="126" selection-end-line="126" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/config_poclab.ini">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36-32/Lib/codecs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="415">
+          <caret line="310" selection-start-line="310" selection-end-line="310" />
         </state>
       </provider>
     </entry>
@@ -740,64 +716,91 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/config.ini">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="11" lean-forward="true" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="23" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/config/config_prod.ini">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python36-32/Lib/codecs.py">
+    <entry file="file://$PROJECT_DIR$/scripts/test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="381">
-          <caret line="308" selection-start-line="308" selection-end-line="308" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/generatehsmkey">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/generatekeyandcsr">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="17" selection-start-line="17" selection-end-line="17" selection-end-column="70" />
+        <state relative-caret-position="85">
+          <caret line="18" column="40" selection-start-line="18" selection-start-column="40" selection-end-line="18" selection-end-column="40" />
           <folding>
-            <element signature="e#188#204#0" expanded="true" />
+            <element signature="e#0#14#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.rst">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1496">
+          <caret line="88" column="87" selection-start-line="88" selection-start-column="87" selection-end-line="88" selection-end-column="87" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/generatecert">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="97">
-          <caret line="13" column="70" selection-start-line="13" selection-start-column="70" selection-end-line="13" selection-end-column="70" />
+        <state relative-caret-position="306">
+          <caret line="23" column="43" selection-start-line="23" selection-start-column="36" selection-end-line="23" selection-end-column="43" />
           <folding>
             <element signature="e#182#208#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/generatepkcs12">
+    <entry file="file://$PROJECT_DIR$/setup.py.BAK">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="40" column="56" selection-start-line="40" selection-start-column="56" selection-end-line="40" selection-end-column="56" />
+        <state relative-caret-position="255">
+          <caret line="15" column="24" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pykeytool/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="850">
+          <caret line="52" selection-start-line="52" selection-end-line="52" />
           <folding>
-            <element signature="e#176#202#0" expanded="true" />
+            <element signature="e#0#9#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/generatekeyandcsr">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="796">
+          <caret line="53" column="75" selection-start-line="53" selection-start-column="70" selection-end-line="53" selection-end-column="75" />
+          <folding>
+            <element signature="e#188#203#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/config.ini">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="12" selection-start-line="27" selection-start-column="12" selection-end-line="27" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/pykeytool/pykeytool.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="429" column="12" selection-start-line="429" selection-start-column="12" selection-end-line="429" selection-end-column="12" />
+        <state relative-caret-position="212">
+          <caret line="269" column="165" selection-start-line="269" selection-start-column="165" selection-end-line="269" selection-end-column="165" />
           <folding>
             <element signature="e#341#360#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/logs/pykeytool.log">
+      <provider selected="true" editor-type-id="LogFileEditorProvider">
+        <state relative-caret-position="-441">
+          <caret line="16" column="116" selection-start-line="16" selection-start-column="116" selection-end-line="16" selection-end-column="116" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="23" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
         </state>
       </provider>
     </entry>

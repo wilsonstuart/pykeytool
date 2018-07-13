@@ -1,0 +1,70 @@
+2018-07-13 12:15:27,911 - [__main__:42] - INFO - ########### Starting Batch Key/CSR Generation ###########
+2018-07-13 12:15:27,911 - [__main__:43] - INFO - Reading Batch file from: C:\Work\Temp\pykeytool\requests.txt
+2018-07-13 12:15:27,915 - [__main__:52] - INFO - Generating Key and CSR for {'CN': '123456789', 'OU': 'WNC 5G ICL Router', 'O': 'Verizon Wireless', 'C': 'US'}
+2018-07-13 12:15:27,915 - [pykeytool.pykeytool:300] - INFO - Start key/csr generation for id 123456789
+2018-07-13 12:15:27,915 - [pykeytool.pykeytool:128] - DEBUG - Creating key in software keytype: crypto.TYPE_RSA keysize: 2048
+2018-07-13 12:15:28,007 - [pykeytool.pykeytool:304] - INFO - SHA256 hash of Public Key Object for id:123456789 is be290340322fee65db936293ae6d88fdf766d0013ef067725150161ed20af770
+2018-07-13 12:15:28,007 - [pykeytool.pykeytool:305] - INFO - SHA256 hash of Private Key Object for id:123456789 is 3e293d64fcf1b98b889d8104725e1a946ec55e2195f68f0f284a50f02fd123fb
+2018-07-13 12:15:28,023 - [pykeytool.pykeytool:328] - INFO - CSR file created for 123456789 and written to C:\Work\Temp\pykeytool\123456789.csr
+2018-07-13 12:15:28,030 - [pykeytool.pykeytool:252] - INFO - Created pkcs12 file for 123456789 at C:\Work\Temp\pykeytool\123456789.p12
+2018-07-13 12:15:28,031 - [__main__:54] - INFO - Processed Request Number: 1 out of 2
+2018-07-13 12:15:28,031 - [__main__:52] - INFO - Generating Key and CSR for {'CN': '343589898', 'OU': 'WNC 5G ICL Router', 'O': 'Verizon Wireless', 'C': 'US'}
+2018-07-13 12:15:28,031 - [pykeytool.pykeytool:300] - INFO - Start key/csr generation for id 343589898
+2018-07-13 12:15:28,031 - [pykeytool.pykeytool:128] - DEBUG - Creating key in software keytype: crypto.TYPE_RSA keysize: 2048
+2018-07-13 12:15:28,222 - [pykeytool.pykeytool:304] - INFO - SHA256 hash of Public Key Object for id:343589898 is 57b8c1cda576bbc698632746e7da2719ea643b5debe24d07aa02b9e38073d8b0
+2018-07-13 12:15:28,222 - [pykeytool.pykeytool:305] - INFO - SHA256 hash of Private Key Object for id:343589898 is ddf82e8aba1838b50281c098a33263d8ad4f1d50ed4489803015d67472d95bdb
+2018-07-13 12:15:28,232 - [pykeytool.pykeytool:328] - INFO - CSR file created for 343589898 and written to C:\Work\Temp\pykeytool\343589898.csr
+2018-07-13 12:15:28,242 - [pykeytool.pykeytool:252] - INFO - Created pkcs12 file for 343589898 at C:\Work\Temp\pykeytool\343589898.p12
+2018-07-13 12:15:28,243 - [__main__:54] - INFO - Processed Request Number: 2 out of 2
+2018-07-13 12:15:28,244 - [__main__:59] - INFO - Number of CSR files created matches the number of requests in request file: 2
+2018-07-13 12:15:28,245 - [__main__:60] - INFO - ########### Finished Batch Key/CSR Generation ###########
+2018-07-13 12:15:46,451 - [__main__:31] - INFO - ########### Starting Batch certificate Process ###########
+2018-07-13 12:15:46,456 - [__main__:39] - INFO - Generating Certificate for 123456789
+2018-07-13 12:15:46,461 - [pykeytool.pykeytool:363] - INFO - SHA256 hash of Public Key Object for id:123456789 is be290340322fee65db936293ae6d88fdf766d0013ef067725150161ed20af770
+2018-07-13 12:15:46,461 - [pykeytool.pykeytool:366] - INFO - Submit Request for cert order for id:123456789 to contextid:14142
+2018-07-13 12:15:46,482 - [urllib3.connectionpool:823] - DEBUG - Starting new HTTPS connection (1): iot-restapi-poc.verizon.com:443
+2018-07-13 12:15:47,262 - [urllib3.connectionpool:393] - DEBUG - https://iot-restapi-poc.verizon.com:443 "POST /rarestapi/rest/certificate_order HTTP/1.1" 200 1315
+2018-07-13 12:15:47,264 - [pykeytool.pykeytool:377] - INFO - Cert Order ID:872214845 for id:123456789 returned from IoT SC
+2018-07-13 12:15:47,275 - [urllib3.connectionpool:823] - DEBUG - Starting new HTTPS connection (1): iot-restapi-poc.verizon.com:443
+2018-07-13 12:15:47,967 - [urllib3.connectionpool:393] - DEBUG - https://iot-restapi-poc.verizon.com:443 "GET /rarestapi/rest/certificate_order/872214845/status HTTP/1.1" 200 138
+2018-07-13 12:15:47,969 - [pykeytool.pykeytool:403] - INFO - Obtained Cert ID:20720019 for Cert Order ID:872214845 is ISSUED on attempt 0
+2018-07-13 12:15:47,969 - [pykeytool.pykeytool:409] - INFO - Retrieving Cert ID:20720019
+2018-07-13 12:15:47,976 - [urllib3.connectionpool:823] - DEBUG - Starting new HTTPS connection (1): iot-restapi-poc.verizon.com:443
+2018-07-13 12:15:48,662 - [urllib3.connectionpool:393] - DEBUG - https://iot-restapi-poc.verizon.com:443 "GET /rarestapi/rest/certificate/20720019 HTTP/1.1" 200 1702
+2018-07-13 12:15:48,665 - [pykeytool.pykeytool:419] - INFO - Cert Serial Number:121140283862969695398117708157717347851140284293 for id:123456789
+2018-07-13 12:15:48,665 - [pykeytool.pykeytool:422] - INFO - Cert Subject CN:123456789 for id:123456789
+2018-07-13 12:15:48,665 - [pykeytool.pykeytool:425] - INFO - Cert Issuer Subject CN:ThingSpace Issuing CA for id:123456789
+2018-07-13 12:15:48,681 - [pykeytool.pykeytool:429] - INFO - Cert Expiry Date:2038-07-13 11:15:47 for id:123456789
+2018-07-13 12:15:48,687 - [__main__:41] - INFO - Processed Request Number: 1 out of 2
+2018-07-13 12:15:48,687 - [__main__:39] - INFO - Generating Certificate for 343589898
+2018-07-13 12:15:48,691 - [pykeytool.pykeytool:363] - INFO - SHA256 hash of Public Key Object for id:343589898 is 57b8c1cda576bbc698632746e7da2719ea643b5debe24d07aa02b9e38073d8b0
+2018-07-13 12:15:48,692 - [pykeytool.pykeytool:366] - INFO - Submit Request for cert order for id:343589898 to contextid:14142
+2018-07-13 12:15:48,702 - [urllib3.connectionpool:823] - DEBUG - Starting new HTTPS connection (1): iot-restapi-poc.verizon.com:443
+2018-07-13 12:15:49,425 - [urllib3.connectionpool:393] - DEBUG - https://iot-restapi-poc.verizon.com:443 "POST /rarestapi/rest/certificate_order HTTP/1.1" 200 1315
+2018-07-13 12:15:49,426 - [pykeytool.pykeytool:377] - INFO - Cert Order ID:793304622 for id:343589898 returned from IoT SC
+2018-07-13 12:15:49,433 - [urllib3.connectionpool:823] - DEBUG - Starting new HTTPS connection (1): iot-restapi-poc.verizon.com:443
+2018-07-13 12:15:50,121 - [urllib3.connectionpool:393] - DEBUG - https://iot-restapi-poc.verizon.com:443 "GET /rarestapi/rest/certificate_order/793304622/status HTTP/1.1" 200 140
+2018-07-13 12:15:50,124 - [pykeytool.pykeytool:403] - INFO - Obtained Cert ID:478483285 for Cert Order ID:793304622 is ISSUED on attempt 0
+2018-07-13 12:15:50,125 - [pykeytool.pykeytool:409] - INFO - Retrieving Cert ID:478483285
+2018-07-13 12:15:50,133 - [urllib3.connectionpool:823] - DEBUG - Starting new HTTPS connection (1): iot-restapi-poc.verizon.com:443
+2018-07-13 12:15:50,831 - [urllib3.connectionpool:393] - DEBUG - https://iot-restapi-poc.verizon.com:443 "GET /rarestapi/rest/certificate/478483285 HTTP/1.1" 200 1702
+2018-07-13 12:15:50,833 - [pykeytool.pykeytool:419] - INFO - Cert Serial Number:231825546551374074932282408634487884813129598926 for id:343589898
+2018-07-13 12:15:50,833 - [pykeytool.pykeytool:422] - INFO - Cert Subject CN:343589898 for id:343589898
+2018-07-13 12:15:50,833 - [pykeytool.pykeytool:425] - INFO - Cert Issuer Subject CN:ThingSpace Issuing CA for id:343589898
+2018-07-13 12:15:50,833 - [pykeytool.pykeytool:429] - INFO - Cert Expiry Date:2038-07-13 11:15:49 for id:343589898
+2018-07-13 12:15:50,837 - [__main__:41] - INFO - Processed Request Number: 2 out of 2
+2018-07-13 12:15:50,838 - [__main__:46] - INFO - Number of certificate files created matches the number of requests in request file: 2
+2018-07-13 12:15:50,839 - [__main__:47] - INFO - ########### Finished Batch certificate Process ###########
+2018-07-13 12:16:00,960 - [__main__:34] - INFO - ########### Starting Batch PKCS12 Update Process ###########
+2018-07-13 12:16:00,963 - [__main__:41] - INFO - Generating PKCS12 for 123456789
+2018-07-13 12:16:00,968 - [pykeytool.pykeytool:269] - INFO - SHA256 hash of Public Key Object for id:123456789 is be290340322fee65db936293ae6d88fdf766d0013ef067725150161ed20af770
+2018-07-13 12:16:00,968 - [pykeytool.pykeytool:270] - INFO - SHA256 hash of Private Key Object for id:123456789 is 3e293d64fcf1b98b889d8104725e1a946ec55e2195f68f0f284a50f02fd123fb
+2018-07-13 12:16:00,973 - [pykeytool.pykeytool:276] - INFO - PKCS12 Created for id:123456789 and written to C:\Work\Temp\pykeytool\123456789.p12
+2018-07-13 12:16:00,974 - [__main__:43] - INFO - Processed Request Number: 1 out of 2
+2018-07-13 12:16:00,975 - [__main__:41] - INFO - Generating PKCS12 for 343589898
+2018-07-13 12:16:00,980 - [pykeytool.pykeytool:269] - INFO - SHA256 hash of Public Key Object for id:343589898 is 57b8c1cda576bbc698632746e7da2719ea643b5debe24d07aa02b9e38073d8b0
+2018-07-13 12:16:00,980 - [pykeytool.pykeytool:270] - INFO - SHA256 hash of Private Key Object for id:343589898 is ddf82e8aba1838b50281c098a33263d8ad4f1d50ed4489803015d67472d95bdb
+2018-07-13 12:16:00,985 - [pykeytool.pykeytool:276] - INFO - PKCS12 Created for id:343589898 and written to C:\Work\Temp\pykeytool\343589898.p12
+2018-07-13 12:16:00,986 - [__main__:43] - INFO - Processed Request Number: 2 out of 2
+2018-07-13 12:16:00,986 - [__main__:48] - INFO - Number of PKCS12 files created matches the number of requests in request file: 2
+2018-07-13 12:16:00,987 - [__main__:49] - INFO - ########### Finish Batch PKCS12 Update Process ###########

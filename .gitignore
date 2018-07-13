@@ -11,3 +11,5 @@
 /*.egg-info
 
 /github.com
+
+/config/config_prod.ini

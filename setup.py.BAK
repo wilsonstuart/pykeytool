@@ -12,7 +12,7 @@ def readme():
 
 setup(
     name="pykeytool",
-    version="0.1",
+    version="0.2",
     description="pykeytool - IoT SC PKI Tool for Generating Keys and submitting csr's to IoT SC",
     long_description=readme(),
     url='http://github.com/wilsonstuart/pykeytool',
