@@ -18,6 +18,7 @@ import time
 from Cryptodome.PublicKey import RSA
 from OpenSSL import crypto
 from PyKCS11 import *
+from PyKCS11.LowLevel import CKF_SERIAL_SESSION, CKF_RW_SESSION
 from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives import serialization
 import pem
@@ -67,8 +68,6 @@ if keygen == 'HARDWARE':
     pkcs11 = PyKCS11Lib()
     pkcs11.load()  # define environment variable PYKCS11LIB=YourPKCS11Lib
     slot = pkcs11.getSlotList(tokenPresent=True)[1]
-    session = pkcs11.openSession(slot, CKF_SERIAL_SESSION | CKF_RW_SESSION)
-    session.login(pkcs11_pin)
 '''
 # Read command line args
 '''
@@ -113,6 +112,8 @@ def encode_rsa_private_key(key, session):
             'exponent2': int.from_bytes(attrDict[PyKCS11.CKA_EXPONENT_2], byteorder='big'),
             'coefficient': int.from_bytes(attrDict[PyKCS11.CKA_COEFFICIENT], byteorder='big'),
         }).dump()
+    else:
+        logger.debug('Failed to find valid private key')
 
 
 def create_key_pair(keytype, keysize, keygen, keyid="pkcs_testing"):
@@ -142,41 +143,64 @@ def create_key_pair(keytype, keysize, keygen, keyid="pkcs_testing"):
 
         # the key_id has to be the same for both objects, it will also be necessary
         # when importing the certificate, to ensure it is linked with these keys.
-        key_id = keyid.encode('utf-8')
 
-        public_template = [
-            (PyKCS11.CKA_CLASS, PyKCS11.CKO_PUBLIC_KEY),
-            (PyKCS11.CKA_TOKEN, PyKCS11.CK_TRUE),
-            (PyKCS11.CKA_PRIVATE, PyKCS11.CK_FALSE),
-            (PyKCS11.CKA_MODULUS_BITS, key_length),
-            (PyKCS11.CKA_PUBLIC_EXPONENT, (0x01, 0x00, 0x01)),
-            (PyKCS11.CKA_ENCRYPT, PyKCS11.CK_TRUE),
-            (PyKCS11.CKA_VERIFY, PyKCS11.CK_TRUE),
-            (PyKCS11.CKA_VERIFY_RECOVER, PyKCS11.CK_TRUE),
-            (PyKCS11.CKA_WRAP, PyKCS11.CK_TRUE),
-            (PyKCS11.CKA_KEY_TYPE, PyKCS11.CKK_RSA),
-            (PyKCS11.CKA_LABEL, label),
-            (PyKCS11.CKA_ID, key_id),
-        ]
+        #Updating to deal with Thales generating RSA key that is not compatible with openssl
+        while True:
+            try:
+                key_id = keyid.encode('utf-8')
 
-        private_template = [
-            (PyKCS11.CKA_CLASS, PyKCS11.CKO_PRIVATE_KEY),
-            (PyKCS11.CKA_PRIVATE, PyKCS11.CK_TRUE),
-            (PyKCS11.CKA_TOKEN, PyKCS11.CK_TRUE),
-            (PyKCS11.CKA_SIGN_RECOVER, PyKCS11.CK_TRUE),
-            (PyKCS11.CKA_SENSITIVE, PyKCS11.CK_FALSE),
-            (PyKCS11.CKA_DECRYPT, PyKCS11.CK_TRUE),
-            (PyKCS11.CKA_SIGN, PyKCS11.CK_TRUE),
-            (PyKCS11.CKA_UNWRAP, PyKCS11.CK_TRUE),
-            (PyKCS11.CKA_LABEL, label),
-            (PyKCS11.CKA_ID, key_id),
-        ]
+                public_template = [
+                    (PyKCS11.CKA_CLASS, PyKCS11.CKO_PUBLIC_KEY),
+                    (PyKCS11.CKA_TOKEN, PyKCS11.CK_TRUE),
+                    (PyKCS11.CKA_PRIVATE, PyKCS11.CK_FALSE),
+                    (PyKCS11.CKA_MODULUS_BITS, key_length),
+                    (PyKCS11.CKA_PUBLIC_EXPONENT, (0x01, 0x00, 0x01)),
+                    (PyKCS11.CKA_ENCRYPT, PyKCS11.CK_TRUE),
+                    (PyKCS11.CKA_VERIFY, PyKCS11.CK_TRUE),
+                    (PyKCS11.CKA_VERIFY_RECOVER, PyKCS11.CK_TRUE),
+                    (PyKCS11.CKA_WRAP, PyKCS11.CK_TRUE),
+                    (PyKCS11.CKA_KEY_TYPE, PyKCS11.CKK_RSA),
+                    (PyKCS11.CKA_LABEL, label),
+                    (PyKCS11.CKA_ID, key_id),
+                ]
 
-        (pubKey, privKey) = session.generateKeyPair(public_template, private_template)
+                private_template = [
+                    (PyKCS11.CKA_CLASS, PyKCS11.CKO_PRIVATE_KEY),
+                    (PyKCS11.CKA_PRIVATE, PyKCS11.CK_TRUE),
+                    (PyKCS11.CKA_TOKEN, PyKCS11.CK_TRUE),
+                    (PyKCS11.CKA_SIGN_RECOVER, PyKCS11.CK_TRUE),
+                    (PyKCS11.CKA_SENSITIVE, PyKCS11.CK_FALSE),
+                    (PyKCS11.CKA_DECRYPT, PyKCS11.CK_TRUE),
+                    (PyKCS11.CKA_SIGN, PyKCS11.CK_TRUE),
+                    (PyKCS11.CKA_UNWRAP, PyKCS11.CK_TRUE),
+                    (PyKCS11.CKA_LABEL, label),
+                    (PyKCS11.CKA_ID, key_id),
+                ]
 
-        privKeyHandle = session.findObjects([(CKA_CLASS, CKO_PRIVATE_KEY), (CKA_ID, key_id)])[0]
-        # Encode the PKCS11 object into string formated and create asn1crypto.keys.RSAPrivateKey object
-        privkey = RSA.importKey(encode_rsa_private_key(privKeyHandle, session))
+                session = pkcs11.openSession(slot, CKF_SERIAL_SESSION | CKF_RW_SESSION)
+                session.login(pkcs11_pin)
+                (pubKey, privKey) = session.generateKeyPair(public_template, private_template)
+
+                privKeyHandle = session.findObjects([(CKA_CLASS, CKO_PRIVATE_KEY), (CKA_ID, key_id)])[0]
+                # Encode the PKCS11 object into string formated and create asn1crypto.keys.RSAPrivateKey object
+                privkey = RSA.importKey(encode_rsa_private_key(privKeyHandle, session))
+
+                session.logout()
+                session.closeSession()
+
+            except ValueError as e:
+                logger.info('Key generation FAILED with invalid key for key id: %s', keyid)
+                logger.debug('########################Exception #############################')
+                logger.debug(e)
+                session.logout()
+                session.closeSession()
+                # Specify different keyid
+                keyid = '-' + keyid
+                continue
+            else:
+                # Continue with code below if no exception occurred
+                break
+
         encrypted_key = privkey.export_key()
         # Convert Cryptodome RSA Private Key to OpenSSL.crypto.PKey
         private_key = serialization.load_pem_private_key(encrypted_key, password=None, backend=default_backend())
@@ -384,11 +408,12 @@ def generate_online_cert(id, context, batchdir):
                                          raapikey),
                                    verify=raapicacerts)
     # Loop configurable time to retrieve cert (hardcode 5 times)
+    #TODO: Add in Error handling for Network connection failure
     for i in range(0, 6):
         certorderstatusresp = json.loads(certorderstatus.text)
         if certorderstatusresp['certificate_order_status'] != 'ISSUED':
             logger.debug('Response for Cert Order ID:%s is %s on attempt %d', str(certorderid),
-                         certorderstatusresp['status'], i)
+                         certorderstatusresp['certificate_order_status'], i)
             time.sleep(5)
             # Call again
             certorderstatus = requests.get(
@@ -396,6 +421,9 @@ def generate_online_cert(id, context, batchdir):
                     raapicert,
                     raapikey),
                 verify=raapicacerts)
+        elif i == 5:
+            logger.info('Max attempts reached. Platform performance issues will exit until resolved')
+            sys.exit(1)
         else:
             # ISSUED
             certid = certorderstatusresp['certId']
@@ -448,3 +476,32 @@ def update_offline_pkcs12(id, outputdir, passphrase):
 
     # Update p12 and encrypt using password
     pkcs12file = update_pkcs12(id, outputdir, passphrase)
+
+
+def modifycacerts_pkcs12(id, outputdir, password):
+    """
+        Modifies the ca certificates in a pkcs12.
+        Arguments: id - unique identifier to identify key and csr. These will be out to files based on the id
+        Returns:   The p12 object
+        """
+    # st_cert=open(cert, 'rt').read()
+
+    # cert = crypto.load_certificate(c.FILETYPE_PEM, cert)
+    p12file = os.path.join(outputdir, id + '.p12')
+    p12 = OpenSSL.crypto.load_pkcs12(open(p12file, "rb").read(), password)
+
+    try:
+        #f = open(cacert, 'rt')
+        cacertlist = pem.parse_file(cacert)
+        x509cacertlist = []
+        #cacertlist = []
+        for cert in range(len(cacertlist)):
+            x509cacertlist.append(OpenSSL.crypto.load_certificate(crypto.FILETYPE_PEM, cacertlist[cert].as_bytes()))
+        p12.set_ca_certificates(x509cacertlist)
+        pkcs12handle = open(p12file, "wb")
+        pkcs12handle.write(p12.export(passphrase=password, iter=2048, maciter=2048))
+        logger.info("PKCS12 Modified for id:%s and written to %s", id, p12file)
+        pkcs12handle.close()
+    except crypto.Error as e:
+        logger.warning("Certificate file '%s' could not be loaded: %s", cacert, e)
+        return None

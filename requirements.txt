@@ -9,7 +9,7 @@ cryptography==2.2.2
 idna==2.7
 Naked==0.1.31
 pycparser==2.18
-pycryptodomex==3.6.3
+pycryptodomex==3.6.6
 PyKCS11==1.5.2
 pyOpenSSL==18.0.0
 PyYAML==3.12
