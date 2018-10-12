@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="85f551c9-e58c-427e-b44b-1e37959a8a65" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/config.ini" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/pykeytool.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pykeytool/pykeytool.py" beforeDir="false" afterPath="$PROJECT_DIR$/pykeytool/pykeytool.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/pykeytool.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/pykeytool.log" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -17,7 +13,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="pykeytool.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="pykeytool.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pykeytool/pykeytool.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="85">
@@ -41,11 +37,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="requirements.txt" pinned="false" current-in-tab="false">
+      <file leaf-file-name="requirements.txt" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/requirements.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+            <state relative-caret-position="85">
+              <caret line="5" column="14" lean-forward="true" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -281,7 +277,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.generatecert_prod">
+  <component name="RunManager" selected="Python.generatepkcs12_prod">
     <configuration name="Batch Generate Keys" type="Multirun" factoryName="Multirun" separateTabs="true" startOneByOne="true" markFailedProcess="true" hideSuccessProcess="false" delayTime="0">
       <runConfiguration name="generatekeyandcsr_poclab" type="Python" />
       <runConfiguration name="generatekeyandcsr_poclab2" type="Python" />
@@ -425,7 +421,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/scripts/generatepkcs12" />
-      <option name="PARAMETERS" value="-pkcs12pw V89$rg&amp;23kTpQ! -r C:\inseego_batch_40\inseego_request_40.txt" />
+      <option name="PARAMETERS" value="-pkcs12pw Pwz48&amp;9wk!Vnwk -r C:\wnc_batch_200\wnc_request_200.txt" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -551,13 +547,13 @@
     <frame x="148" y="29" width="1546" height="1050" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.117374" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.117374" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32894737" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50105375" side_tool="true" weight="0.42366412" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32919848" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32894737" />
       <window_info anchor="bottom" id="Python Console" order="7" sideWeight="0.49894625" weight="0.32824427" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49894625" visible="true" weight="0.55921054" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49894625" visible="true" weight="0.55921054" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32919848" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -904,13 +900,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/requirements.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pykeytool/pykeytool.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -918,6 +907,13 @@
           <folding>
             <element signature="e#341#360#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="14" lean-forward="true" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
         </state>
       </provider>
     </entry>
