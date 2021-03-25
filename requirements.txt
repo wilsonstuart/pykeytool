@@ -12,7 +12,7 @@ pycparser==2.18
 pycryptodomex==3.6.6
 PyKCS11==1.5.2
 pyOpenSSL==18.0.0
-PyYAML==3.12
+PyYAML==5.4
 requests==2.19.1
 shellescape==3.4.1
 six==1.11.0
